@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Service Portal">1c00c11047322100ba13a5554ee490f2</application>
+        <assessment display_value="Customer Service Satisfaction Survey">a0dfbc85c33231001b757bfaa2d3aee7</assessment>
+        <content_page/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>ASSESSMENT</link_type>
+        <map_page/>
+        <mobile_title>testttttttttttttttt</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name/>
+        <order>1</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query>/sp</query>
+        <report/>
+        <roles/>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-13 06:58:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>33351df6db09230055552bfa4b96194a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>testttttttttttttttt</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_app_module_33351df6db09230055552bfa4b96194a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-13 07:03:03</sys_updated_on>
+        <timeline_page/>
+        <title>testttttttttttttttt</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name>window</window_name>
+    </sys_app_module>
+</record_update>
