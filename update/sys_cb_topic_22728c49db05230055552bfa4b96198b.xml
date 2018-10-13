@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="INSERT_OR_UPDATE">
+        <applicability/>
+        <connect_queue/>
+        <description/>
+        <graph>{
+  "graph_api_version": "1.0.3",
+  "goals": {
+    "e8b629df11214e258c44c3563cda5cec": {
+      "id": "e8b629df11214e258c44c3563cda5cec",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "804255a7107c4980b9a298a8e3cc30e1": {
+          "id": "804255a7107c4980b9a298a8e3cc30e1",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "f2cc499f5de448c19d9a317a16c67db8": {
+          "id": "f2cc499f5de448c19d9a317a16c67db8",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "523d8a9f82c44db281e6ab375c9674a1": {
+          "id": "523d8a9f82c44db281e6ab375c9674a1",
+          "stepType": "Prompt",
+          "name": "get query",
+          "prompt": {
+            "value": "how i can i help you",
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "please wait , we are processing your request",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": "",
+          "optional": false,
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "ef1fde82d5a14f54a7588806feedb939"
+        },
+        "8d9f2993bb0744f991b07c26a7bb1a70": {
+          "stepType": "ChoicePrompt",
+          "name": "2",
+          "prompt": {
+            "value": "please choose youer choice",
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": "",
+          "optional": false,
+          "defaultValue": {
+            "value": "1",
+            "mode": "simple"
+          },
+          "variableId": "12b3f046e67d4418ac68d2b9e4eb3b0f",
+          "id": "8d9f2993bb0744f991b07c26a7bb1a70"
+        },
+        "9eae6a3fa0d64b8281d7f00273c900c0": {
+          "id": "9eae6a3fa0d64b8281d7f00273c900c0",
+          "stepType": "Decision",
+          "name": "Decision"
+        },
+        "d1324b20bc164dc288d64bd2d6747f8c": {
+          "id": "d1324b20bc164dc288d64bd2d6747f8c",
+          "stepType": "ImplicitEnd"
+        },
+        "c6847aaf5c82451cb2dd913f963f274f": {
+          "id": "c6847aaf5c82451cb2dd913f963f274f",
+          "stepType": "RecordOutput",
+          "name": "wqedwed",
+          "variableId": "",
+          "mode": "script",
+          "script": "(function execute(table) {\n    /* Write a glide record query, and return the glide record.\n       For example:\n       \n       var gr = new GlideRecord(table);\n       gr.addEncodedQuery('active=true^number=INC0010099');\n       gr.query();\n       if(gr.next()) {\n          return gr;\n    }\n    */\n\n    return true;\n})(table)\n",
+          "tableName": "ecc_action",
+          "fields": [
+            "sys_mod_count"
+          ],
+          "applicability": ""
+        }
+      },
+      "edges": [
+        {
+          "id": "6fc4c1cf27db4898b788bb9b985eea06",
+          "edgeType": "Branch",
+          "source": "9eae6a3fa0d64b8281d7f00273c900c0",
+          "target": "f2cc499f5de448c19d9a317a16c67db8",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": "(function execute() {\n    /* Return true or false to indicate the branch condition's applicability.\n       For example:\n\n       var applies = vaInputs.first_name == 'Bill' ? true : false;\n       return applies;\n    */\n\n\n    if(vaInputs.answer == 1)\n    {\nreturn true;\n    }\n    \n})()\n",
+          "label": "Always"
+        },
+        {
+          "id": "68fee4b6112d4321b3bd4b1076cee061",
+          "edgeType": "Edge",
+          "source": "523d8a9f82c44db281e6ab375c9674a1",
+          "target": "8d9f2993bb0744f991b07c26a7bb1a70",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "b245fcf728434219a9ef3ca609969fce",
+          "edgeType": "Edge",
+          "source": "804255a7107c4980b9a298a8e3cc30e1",
+          "target": "523d8a9f82c44db281e6ab375c9674a1",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "4e044ad18d824fccb78f72e07844ba81",
+          "edgeType": "Edge",
+          "source": "8d9f2993bb0744f991b07c26a7bb1a70",
+          "target": "9eae6a3fa0d64b8281d7f00273c900c0",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "8c0ea7e0b8fb46df957249e064db3a68",
+          "edgeType": "Branch",
+          "source": "9eae6a3fa0d64b8281d7f00273c900c0",
+          "target": "c6847aaf5c82451cb2dd913f963f274f",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": "(function execute() {\n    return false;\n})()\n",
+          "label": "Never"
+        },
+        {
+          "id": "42422ba8e82d49da80da7562d19a6131",
+          "edgeType": "Edge",
+          "source": "c6847aaf5c82451cb2dd913f963f274f",
+          "target": "d1324b20bc164dc288d64bd2d6747f8c",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "ef1fde82d5a14f54a7588806feedb939": {
+      "id": "ef1fde82d5a14f54a7588806feedb939",
+      "name": "get_query",
+      "label": "Get Query",
+      "varType": "string"
+    },
+    "12b3f046e67d4418ac68d2b9e4eb3b0f": {
+      "id": "12b3f046e67d4418ac68d2b9e4eb3b0f",
+      "name": "2",
+      "label": "2",
+      "varType": "choice",
+      "choices": [
+        {
+          "label": "1",
+          "value": "1"
+        },
+        {
+          "label": "2",
+          "value": "2"
+        }
+      ]
+    },
+    "c96dd815eae34d3883a062502980eed9": {
+      "id": "c96dd815eae34d3883a062502980eed9",
+      "value": {
+        "mode": "simple",
+        "value": "1"
+      },
+      "name": "answer",
+      "label": "answer",
+      "varType": "script"
+    }
+  }
+}</graph>
+        <key_phrases>search</key_phrases>
+        <live_agent>false</live_agent>
+        <name>search</name>
+        <roles/>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-07 14:23:42</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>22728c49db05230055552bfa4b96198b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>search</sys_name>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_cb_topic_22728c49db05230055552bfa4b96198b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-07 14:40:42</sys_updated_on>
+        <variables/>
+    </sys_cb_topic>
+    <sys_variable_value action="delete_multiple" query="document_key=22728c49db05230055552bfa4b96198b"/>
+</record_update>

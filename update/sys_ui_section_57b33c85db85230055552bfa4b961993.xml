@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="New Section" section_id="57b33c85db85230055552bfa4b961993" sys_domain="global" table="problem" version="3" view="Mobile">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>sn_res_shaper_resolution_shaper.xml</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-10-07 17:58:55</sys_created_on>
+            <sys_id>5bb33c85db85230055552bfa4b96199e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter display_value="ResolutionShaper">58dca524d77002004f1e82285e610309</sys_ui_formatter>
+            <sys_ui_section caption="New Section" display_value="New Section" name="problem" sys_domain="global" view="3732736181131300aadba4a47c598e41">57b33c85db85230055552bfa4b961993</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-10-07 17:58:55</sys_updated_on>
+            <sys_user/>
+            <type>formatter</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-10-07 17:58:55</sys_created_on>
+            <sys_id>93b33c85db85230055552bfa4b96199f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="problem" sys_domain="global" view="3732736181131300aadba4a47c598e41">57b33c85db85230055552bfa4b961993</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-10-07 17:58:55</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>New Section</caption>
+            <header>false</header>
+            <name>problem</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-10-07 17:58:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>57b33c85db85230055552bfa4b961993</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>New Section</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+            <sys_update_name>sys_ui_section_57b33c85db85230055552bfa4b961993</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-10-07 17:58:55</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Mobile" name="Mobile">3732736181131300aadba4a47c598e41</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

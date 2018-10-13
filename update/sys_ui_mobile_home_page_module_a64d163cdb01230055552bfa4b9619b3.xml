@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_mobile_home_page_module">
+    <sys_ui_mobile_home_page_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <background_color>#81878e</background_color>
+        <content_style>light_content</content_style>
+        <icon>cards</icon>
+        <image>0d8dd63cdb01230055552bfa4b96190c</image>
+        <module display_value="path">aae81678db01230055552bfa4b96196d</module>
+        <roles/>
+        <subtitle>click he</subtitle>
+        <sys_class_name>sys_ui_mobile_home_page_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-07 07:02:15</sys_created_on>
+        <sys_id>a64d163cdb01230055552bfa4b9619b3</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>service portal</sys_name>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_ui_mobile_home_page_module_a64d163cdb01230055552bfa4b9619b3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-07 07:02:36</sys_updated_on>
+        <title>service portal</title>
+    </sys_ui_mobile_home_page_module>
+</record_update>
