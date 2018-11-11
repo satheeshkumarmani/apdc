@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,$rootScope,spUtil) {
+		/* widget controller */
+		var c = this;
+
+		$rootScope.$on('selectNote', function(event,data) {
+			c.server.get({
+				action: 'getNote',
+				data: data
+			}).then(function(r) {
+				
+				console.log('slog submitted');
+			});
+			
+			
+			setTimeout(function(){
+
+
+spUtil.update($scope);
+console.log('refreshed');
+
+}, 3000);
+
+
+		});
+	}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>notes_body</id>
+        <internal>false</internal>
+        <link/>
+        <name>Notes Body</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+		/* populate the 'data' object */
+	data.notes = [];
+	var obj ={};
+		obj.name='test';
+	obj.email='ding';
+	data.notes.push(obj);
+	data.counter=0;
+
+		if (input) {
+		
+				if (input.action == 'getNote') {
+					console.log('slog'+input.data);
+					
+					data.counter++;
+					
+					obj.name = input.data.name;
+					obj.email = input.data.email;
+					
+					data.notes.push(obj);
+					console.log("data pushed"+ obj.email);
+					//console.log(data.notes);
+				}
+			
+		}
+	})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-11-09 10:43:26</sys_created_on>
+        <sys_id>d33c8163dbe1230055552bfa4b9619c0</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>Notes Body</sys_name>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sp_widget_d33c8163dbe1230055552bfa4b9619c0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-11 07:32:49</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default">
+	  <div class="panel-heading clearfix">
+	    <h3 class="panel-title pull-left">
+	      ${Selected User}
+        {{data.counter}}
+        
+        
+	    </h3>
+	  </div>
+	  <div class="panel-body"  ng-repeat="notes in data.notes">
+	    <p>
+	      {{notes.name}}
+	    </p>
+      <p>
+	      {{notes.email}}
+	    </p>
+	  </div>
+	</div>]]></template>
+    </sp_widget>
+</record_update>
