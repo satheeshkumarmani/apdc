@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="cmdb_qb_result_base" label="Query Results" max_length="40" name="x_93700_apdc_u_cmdb_qb_result_308c359bf34e1bc00feb56d03916c85d9559f9d8" type="collection"/>
+</database>
