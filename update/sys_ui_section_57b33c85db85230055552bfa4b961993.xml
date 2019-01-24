@@ -7,8 +7,8 @@
             <sys_created_on>2018-10-07 17:58:55</sys_created_on>
             <sys_id>5bb33c85db85230055552bfa4b96199e</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter display_value="ResolutionShaper">58dca524d77002004f1e82285e610309</sys_ui_formatter>
-            <sys_ui_section caption="New Section" display_value="New Section" name="problem" sys_domain="global" view="3732736181131300aadba4a47c598e41">57b33c85db85230055552bfa4b961993</sys_ui_section>
+            <sys_ui_formatter display_value="">58dca524d77002004f1e82285e610309</sys_ui_formatter>
+            <sys_ui_section caption="New Section" display_value="New Section" name="problem" sys_domain="global" view="127c707365022300aadb05e0fb3edf35">57b33c85db85230055552bfa4b961993</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-10-07 17:58:55</sys_updated_on>
             <sys_user/>
@@ -22,7 +22,7 @@
             <sys_id>93b33c85db85230055552bfa4b96199f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="New Section" display_value="New Section" name="problem" sys_domain="global" view="3732736181131300aadba4a47c598e41">57b33c85db85230055552bfa4b961993</sys_ui_section>
+            <sys_ui_section caption="New Section" display_value="New Section" name="problem" sys_domain="global" view="127c707365022300aadb05e0fb3edf35">57b33c85db85230055552bfa4b961993</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2018-10-07 17:58:55</sys_updated_on>
             <sys_user/>
@@ -50,7 +50,7 @@
             <sys_updated_on>2018-10-07 17:58:55</sys_updated_on>
             <sys_user/>
             <title>false</title>
-            <view display_value="Mobile" name="Mobile">3732736181131300aadba4a47c598e41</view>
+            <view display_value="Mobile" name="Mobile">127c707365022300aadb05e0fb3edf35</view>
             <view_name/>
         </sys_ui_section>
     </sys_ui_section>

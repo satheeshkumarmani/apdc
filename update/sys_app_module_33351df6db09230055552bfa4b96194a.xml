@@ -2,7 +2,7 @@
     <sys_app_module action="INSERT_OR_UPDATE">
         <active>true</active>
         <application display_value="Service Portal">1c00c11047322100ba13a5554ee490f2</application>
-        <assessment display_value="Customer Service Satisfaction Survey">a0dfbc85c33231001b757bfaa2d3aee7</assessment>
+        <assessment display_value="">a0dfbc85c33231001b757bfaa2d3aee7</assessment>
         <content_page/>
         <device_type/>
         <filter/>

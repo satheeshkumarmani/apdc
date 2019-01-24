@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_wizard_answer">
+    <sys_wizard_answer action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <answer>Query Results</answer>
+        <button_label/>
+        <dependent_value/>
+        <element/>
+        <name>Query Results</name>
+        <next_question/>
+        <order>100</order>
+        <payload_name/>
+        <question display_value="Query Builder Results" name="Query Builder Results">47ddb43365422300aadb05e0fb3edf0e</question>
+        <roles/>
+        <script/>
+        <sys_class_name>sys_wizard_answer</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2019-01-17 13:09:39</sys_created_on>
+        <sys_id>a4b3c5354f032300209b4a318110c72e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Query Results</sys_name>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_wizard_answer_a4b3c5354f032300209b4a318110c72e</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2019-01-17 13:09:39</sys_updated_on>
+        <table/>
+        <target_url>x_93700_apdc_u_cmdb_qb_result_308c359bf34e1bc00feb56d03916c85d9559f9d8.do</target_url>
+        <type>1</type>
+    </sys_wizard_answer>
+</record_update>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css/>
+        <draft>true</draft>
+        <dynamic_title_structure/>
+        <id>twitter</id>
+        <internal>false</internal>
+        <public>true</public>
+        <roles/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-01-22 14:34:50</sys_created_on>
+        <sys_id>ed178b574f032300209b4a318110c76a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>twitter</sys_name>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sp_page_ed178b574f032300209b4a318110c76a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-01-22 14:34:50</sys_updated_on>
+        <title>twitter</title>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=ed178b574f032300209b4a318110c76a"/>
+</record_update>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="sn_dd_apdc_publishtoappstore" name="sn_dd_apdc_publishtoappstore">0b248d354f032300209b4a318110c78b</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-01-17 13:11:44</sys_created_on>
+        <sys_id>47248d354f032300209b4a318110c78d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>0b248d354f032300209b4a318110c78b</sys_name>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_embedded_help_role_47248d354f032300209b4a318110c78d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-01-17 13:11:44</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>

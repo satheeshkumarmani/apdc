@@ -47,13 +47,13 @@
         <reference_qual/>
         <reference_qual_condition/>
         <reference_type/>
-        <sizeclass>1</sizeclass>
+        <sizeclass/>
         <spell_check>false</spell_check>
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-10-07 06:19:25</sys_created_on>
-        <sys_id>f942f81fdb49630055552bfa4b961959</sys_id>
+        <sys_id>a8b3c5354f032300209b4a318110c712</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_93700_apdc_table</sys_name>
         <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
@@ -61,7 +61,7 @@
         <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
         <sys_update_name>sys_dictionary_x_93700_apdc_table_NULL</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2018-10-14 17:38:51</sys_updated_on>
+        <sys_updated_on>2019-01-17 13:09:40</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

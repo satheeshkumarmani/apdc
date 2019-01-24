@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="cmdb_qb_result_base" label="Query Results" max_length="40" name="x_93700_apdc_u_cmdb_qb_result_308c359bf34e1bc00feb56d03916c85d9559f9d8" type="collection"/>
+    <element extends="cmdb_qb_result_base" label="Query Results" max_length="40" name="x_93700_apdc_u_cmdb_qb_result_308c359bf34e1bc00feb56d03916c85d9559f9d8" type="collection">
+        <element label="Result Count" max_length="40" name="count" type="auto_increment"/>
+        <element choice="3" default="javascript:current.getTableName();" dynamic_default_value="b5cb83a85f220100a9ad2572f2b4773c" label="Sys class name" max_length="80" name="sys_class_name" type="sys_class_name" use_dynamic_default="true">
+            <choice/>
+        </element>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
 </database>
