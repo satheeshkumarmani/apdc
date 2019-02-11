@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_notif_subscription">
+    <sys_notif_subscription action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <affected_record/>
+        <affected_table/>
+        <condition/>
+        <devices>78bc7cb365022300aadb05e0fb3edf7c,3856dd614faf6300209b4a318110c750</devices>
+        <filter/>
+        <name>qwq</name>
+        <notification display_value="Location affected">8e0aa4580a0a0286007245685cbff26b</notification>
+        <schedule/>
+        <sys_class_name>sys_notif_subscription</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-02-10 16:26:19</sys_created_on>
+        <sys_id>a6b6d1a14faf6300209b4a318110c771</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>qwq</sys_name>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_notif_subscription_a6b6d1a14faf6300209b4a318110c771</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-02-10 16:27:14</sys_updated_on>
+        <user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</user>
+    </sys_notif_subscription>
+</record_update>

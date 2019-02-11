@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_message">
+    <sys_ui_message action="INSERT_OR_UPDATE">
+        <application>Virtual Agent</application>
+        <key>Thanks for your respnse</key>
+        <language>en</language>
+        <message>Thanks for your respnse</message>
+        <sys_class_name>sys_ui_message</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-01-24 10:21:00</sys_created_on>
+        <sys_id>da30ec0c4f5f2300209b4a318110c7cc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Thanks for your respnse</sys_name>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_ui_message_da30ec0c4f5f2300209b4a318110c7cc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-01-24 10:21:00</sys_updated_on>
+    </sys_ui_message>
+</record_update>
