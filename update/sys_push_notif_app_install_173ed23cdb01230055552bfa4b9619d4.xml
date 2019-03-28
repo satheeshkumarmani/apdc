@@ -10,7 +10,7 @@
         <sys_name>fZC7R76WmKo:APA91bG8re3JQIwm5bGqu6l6Og55FCGL76QiPdxNMzhHLxtILMQ1tXNhkdW8YhpKrJgaO9qyuoqpV12lkyaQZX5ciuJgt09ktcrM3xQ5SDjiXVTrCjgSaRjawSJxfrPBNpAl_L0VCHlC</sys_name>
         <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
         <sys_policy/>
-        <sys_push_application_id display_value="ServiceNow Mobile Application">ab704041ff1102009738ffffffffff33</sys_push_application_id>
+        <sys_push_application_id display_value="ServiceNow Classic Mobile Application">ab704041ff1102009738ffffffffff33</sys_push_application_id>
         <sys_push_platform_id display_value="Google">53e75f30ff0002009738ffffffffff12</sys_push_platform_id>
         <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
         <sys_update_name>sys_push_notif_app_install_173ed23cdb01230055552bfa4b9619d4</sys_update_name>

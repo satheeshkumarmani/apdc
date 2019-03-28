@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>satheesh</description>
+        <field/>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>popup with editable filter</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	
+	var field = 'u_line_of_business'; //reference field lookup should be attached to.
+	var lookupTable = 'cmn_department';
+	var table = g_form.getTableName(); 
+	
+	var lookupfield = 'lookup.'+ table + '.' + field; //Creates the lookup ID.
+	
+	document.getElementById(lookupfield).style.display = "none"; // Hide the magnifier
+	
+	var pinclookup = $(lookupfield);	
+	if (pinclookup){
+		var target = table + '.' + field;
+		
+		pinclookup.insert({
+			after:'<a id="customLookup" class="btn btn-default icon-search icon"></a>'});
+		var userpop = $('customLookup');
+		userpop.observe('click', opensearch);
+	}
+		
+	function opensearch() {
+		var url = '&sysparm_query=parent=6726df8b740e9100ee9366d53ce457f3'; //filter
+		var refurl = reflistOpenUrl(target, target, field, lookupTable, 'null', 'false', '');
+		var refurlquery = refurl + url;
+		popupOpenStandard(refurlquery, 'lookup');
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-28 07:05:47</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>9d9f44d04fa4f300209b4a318110c7a3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>popup with editable filter</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_script_client_9d9f44d04fa4f300209b4a318110c7a3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-28 07:05:47</sys_updated_on>
+        <table/>
+        <type/>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
