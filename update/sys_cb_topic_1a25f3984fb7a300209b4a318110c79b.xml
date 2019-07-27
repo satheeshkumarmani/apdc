@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
     <sys_cb_topic action="INSERT_OR_UPDATE">
         <applicability/>
+        <category/>
         <connect_queue/>
         <description>ITSM conversation for searching catalog items</description>
+        <flexible_conversation_switching>false</flexible_conversation_switching>
         <graph>{
   "goals": {
     "28cddb8193664e82a1455aea8b67bf20": {
@@ -435,6 +437,9 @@
         <key_phrases>request,buy,item,catalog,purchase,order,computer,phone,need,require</key_phrases>
         <live_agent>false</live_agent>
         <name>order an item-</name>
+        <nlu_intent/>
+        <nlu_model/>
+        <nlu_provider/>
         <roles/>
         <sys_class_name>sys_cb_topic</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -443,9 +448,9 @@
         <sys_id>1a25f3984fb7a300209b4a318110c79b</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>order an item-</sys_name>
-        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
         <sys_policy/>
-        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
         <sys_update_name>sys_cb_topic_1a25f3984fb7a300209b4a318110c79b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-02-19 17:01:13</sys_updated_on>

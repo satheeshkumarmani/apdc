@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function(cabrillo) {
+  /* widget controller */
+  var c = this;
+	c.data.width= 10;
+	
+	cabrillo.geolocation.getCurrentLocation().then(function(location) {
+    console.log('Current location:', location);
+}, function(error) {
+    console.log('Failed to get current location.', error);
+});
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css> &#13;
+&#13;
+.fil {&#13;
+  &#13;
+  filter: grayscale(100%);&#13;
+}&#13;
+&#13;
+&#13;
+.btn {  &#13;
+margin-left:16px !important;&#13;
+}&#13;
+&#13;
+&#13;
+&#13;
+.panel-heading {&#13;
+  &#13;
+    border-radius: 13px;&#13;
+  &#13;
+}&#13;
+&#13;
+ &#13;
+&#13;
+ .panel-default {&#13;
+  border-radius: 13px;&#13;
+  border: 2px solid red;&#13;
+   &#13;
+  &#13;
+}&#13;
+&#13;
+.power-controls {&#13;
+  &#13;
+  padding: 25px;&#13;
+}&#13;
+&#13;
+.camera-container {&#13;
+  &#13;
+  position: relative;&#13;
+  width: 100%;&#13;
+  height: 100%&#13;
+}&#13;
+&#13;
+.vid&#13;
+{&#13;
+  border-radius: 25px;&#13;
+  border: 2px solid #73AD21;&#13;
+  width: 100%;&#13;
+}&#13;
+&#13;
+-webkit-filter: sepia(1);&#13;
+&#13;
+.camera-container .controls {&#13;
+  position: absolute;&#13;
+  top: 0;&#13;
+  left: 0;&#13;
+  width: 100%;&#13;
+  height: 100%;&#13;
+  z-index: 99;&#13;
+  display: flex;&#13;
+  align-items: flex-end;&#13;
+}&#13;
+&#13;
+.controls button, .controls a {&#13;
+  width: 55px;&#13;
+  height: 55px;&#13;
+  border-radius: 50%;&#13;
+  margin: 10px 15px;&#13;
+}&#13;
+&#13;
+.controls button.disabled, .controls a.disabled {&#13;
+  background-color: lightgray;&#13;
+    pointer-events: none;&#13;
+}&#13;
+&#13;
+.controls a {&#13;
+  float:right;&#13;
+  padding: 16px;&#13;
+}&#13;
+&#13;
+.controls{&#13;
+  padding-left: 70%;&#13;
+}&#13;
+&#13;
+.controls button i, .controls a i {&#13;
+  font-size: 24px;&#13;
+}&#13;
+&#13;
+.controls button.camera-flip {&#13;
+  transform: rotate(-21deg);&#13;
+}&#13;
+&#13;
+.controls button.camera-flip i {&#13;
+  transform: skewX(50deg);&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>        &lt;button ng-click="flipCamera()" class="bg-success text-primary camera-flip"&gt;&lt;i class="fa fa-refresh"&gt;&lt;/i&gt;&lt;/button&gt;&#13;
+&#13;
+&lt;a ng-click="download()" id="download_photo" class="bg-success disabled"&gt;&lt;i class="fa fa-download"&gt;&lt;/i&gt;&lt;/a&gt;</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function(scope){
+	var mode = "user";
+	var constraints = {video: {facingMode: mode}}
+	
+	var control = $(".controls")[0];
+	var cameraContainer = $(".camera-container")[0];
+	var image = $(".photo-image")[0];
+	var download_photo_btn = $("#download_photo")[0];
+	var delete_photo_btn = $("#delete_photo")[0];
+	var capture = $("#capture")[0];
+	var video = $("video")[0];
+	
+	
+	function getCamera() {
+		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+			navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
+				video.srcObject = mediaStream;
+				video.onloadedmetadata = function(e) {
+					video.play();
+					video.onplay =  function(){
+						showVideo();
+					}
+				};
+			})
+		}
+	}
+
+	scope.flipCamera = function(){
+		if(mode == "environment")
+			mode = "user";
+		else
+			mode = "environment";
+		constraints.video.facingMode = mode;
+		getCamera();
+	}
+
+	scope.cameraOn = function() {
+		getCamera();
+		
+		control.classList.remove("hide");
+		video.classList.remove("hide");
+		capture.classList.remove("hide");
+	}
+
+	scope.cameraOff = function() {
+		//cameraContainer.classList.remove("show");
+		//video.stop();
+		//video.pause();
+		
+		
+		console.log(video.srcObject);
+		
+		console.log(video.srcObject.getTracks());
+		console.log(video.srcObject.getTracks()[0]);
+		video.srcObject.getTracks()[0].stop();
+		video.classList.add("hide");
+		
+		console.log(control);
+		control.classList.add("hide");
+		
+		download_photo_btn.classList.add("disabled");
+		
+	}
+
+	function showVideo(){
+		cameraContainer.classList.add("show")
+	}
+
+	scope.take_snapshot = function(){
+
+		var snap = takeSnapshot();
+		
+		scope.update(snap);
+		
+		console.log(snap);
+
+		// Show image. 
+		image.setAttribute('src', snap);
+		image.classList.remove("hide");
+
+		// Enable delete and save buttons
+		delete_photo_btn.classList.remove("hide");
+		capture.classList.add("hide");
+	//	download_photo_btn.classList.remove("disabled");
+
+		// Set the href attribute of the download button to the snap url.
+		//download_photo_btn.href = snap;
+
+		// Pause video playback of stream.
+		
+		//video.srcObject.getVideoTracks().forEach(track => track.stop());
+		//video.stop();
+		video.classList.add("hide");
+		video.pause();
+	}
+
+	function takeSnapshot(){  
+		var hidden_canvas = document.querySelector('canvas'),
+			context = hidden_canvas.getContext('2d');
+
+		var width = video.videoWidth,
+			height = video.videoHeight;
+
+		if (width && height) {
+
+			// Setup a canvas with the same dimensions as the video.
+			hidden_canvas.width = width;
+			hidden_canvas.height = height;
+
+			// Make a copy of the current frame in the video on the canvas.
+			context.drawImage(video, 0, 0, width, height);
+
+			// Turn the canvas image into a dataURL that can be used as a src for our photo.
+			return hidden_canvas.toDataURL('image/jpg');
+		}
+	}
+
+	scope.deletePhoto = function(){
+		// Hide image.
+		image.setAttribute('src', "");
+		image.classList.add("hide");
+
+		// Disable delete and save buttons
+		delete_photo_btn.classList.add("hide");
+		//download_photo_btn.classList.add("disabled");
+
+		// Resume playback of stream.
+		video.play();
+		video.classList.remove("hide");
+		//delete_photo_btn.classList.remove("hide");
+		capture.classList.remove("hide");
+		
+
+	};
+	
+	
+	 scope.update = function(image) {
+
+    scope.data.as = image;
+   scope.server.update().then(function (response) {
+	   
+	   console.log(scope.data.response);
+  
+
+
+   });
+
+
+       }
+
+}]]></link>
+        <name>Copy of t2</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	
+	
+	if(input)
+
+
+{
+
+
+gs.log(input.as);
+	
+	
+	
+	
+// 	var fileName = 'image.png';
+// var contentType = 'image/png';
+// var tableName = 'incident';
+// var tableSysId = '85071a1347c12200e0ef563dbb9a71c1';
+//var StringUtil = new GlideStringUtil();
+//var attachment = new Attachment();
+	
+	//data.image = input.as;
+	data.image = input.as.replace(/^data:image\/(png|jpg);base64,/, "");
+//attachment.write('incident',"85071a1347c12200e0ef563dbb9a71c1", "test1.jpg", 'image/jpg', StringUtil.base64Decode(data.image));
+// var eccGr = new GlideRecord('ecc_queue');
+// eccGr.initialize();
+// eccGr.setValue('agent', 'AttachmentCreator');
+// eccGr.setValue('topic', 'AttachmentCreator');
+// eccGr.setValue('name', fileName+':'+contentType);
+// eccGr.setValue('source', tableName+':'+tableSysId);
+// eccGr.setValue('payload', data.image);
+// var sys_id = eccGr.insert();
+	
+	
+	
+	var request = new sn_ws.RESTMessageV2(); 
+request.setEndpoint('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBwTtIT8mCgPd0EehfAFk89VGaYF00Hj5Q'); 
+request.setHttpMethod('POST'); 
+request.setRequestHeader("x-api-key","AIzaSyAvVxl47nRVtQZkDtKykPbosA6X8w2XTRU"); 
+var reqBody = "{ \"requests\": [ { \"image\": { \"content\":\""+data.image+"\",\"source\": {} }, \"features\": [ { \"type\": \"FACE_DETECTION\" } ] } ]}"; 
+
+
+request.setRequestBody(reqBody); 
+var response= request.execute(); 
+var httpStatus = response.getStatusCode(); 
+var responseBody = response.getBody();
+	
+	data.response =responseBody;
+gs.log("slog"+data.response);
+
+
+	
+// 	var StringUtil = new GlideStringUtil();
+// var attachment = new Attachment();
+// if (input.as){
+	
+// 	data.image = input.as.replace(/^data:image\/(png|jpg);base64,/, "") ;
+// attachment.write('incident',"85071a1347c12200e0ef563dbb9a71c1", "test1", 'image/jpeg', StringUtil.base64Decode(data.image));
+// 	//StringUtil.base64DecodeAsBytes(data.image)));
+
+
+}
+
+
+	
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-05-18 13:37:39</sys_created_on>
+        <sys_id>627250f01ba1370032e9dc29bc4bcb58</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Copy of t2</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sp_widget_627250f01ba1370032e9dc29bc4bcb58</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-05-18 13:37:39</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title"><marquee>Open Your WebCam</marquee></h4>
+  </div>
+  <div class="panel-body">
+      <div class="power-controls">
+          <div class="btn-group">
+            
+            
+
+ <button ng-click="cameraOn()" class="btn btn-primary">${Open Camera}</button>
+  
+  <button ng-click="cameraOff()" class="btn btn-info">${Close Camera}</button>
+
+            
+    
+                      
+           
+          
+          </div>
+      </div>
+    <div class="camera-container hide">
+      <img class="photo-image vid fil hide">
+      <video class = 'vid fil'></video>
+      <div class="controls">
+ <button id="delete_photo" ng-click="deletePhoto()" class="bg-danger hide"><i class="fa fa-close fa-lg"></i></button>
+        <button id="capture" ng-click="take_snapshot()" class="bg-success text-primary"><i class="fa fa-camera"></i></button>
+        
+       
+      </div>
+      <canvas class=" vid hide"></canvas>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

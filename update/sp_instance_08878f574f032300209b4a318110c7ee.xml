@@ -11,16 +11,16 @@
         <short_description/>
         <size>md</size>
         <sp_column display_value="1">aa7783d74f032300209b4a318110c73c</sp_column>
-        <sp_widget display_value="Twitter Widget">9b953127dbffd700ff42d540cf9619b4</sp_widget>
+        <sp_widget display_value="">9b953127dbffd700ff42d540cf9619b4</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-01-22 14:36:24</sys_created_on>
         <sys_id>08878f574f032300209b4a318110c7ee</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name/>
-        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
         <sys_policy/>
-        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
         <sys_update_name>sp_instance_08878f574f032300209b4a318110c7ee</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-01-22 14:36:24</sys_updated_on>

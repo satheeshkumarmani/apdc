@@ -29,7 +29,7 @@
         <column/>
         <compute_percent>aggregate</compute_percent>
         <content/>
-        <created_by_user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</created_by_user>
+        <created_by_user display_value="Satheeshkumar ">6816f79cc0a8016401c5a33be04be441</created_by_user>
         <custom_chart_size>false</custom_chart_size>
         <custom_chart_title_position>false</custom_chart_title_position>
         <custom_config>{"transforms":[{"transform":{"transform":"Reference","name":"chart-subjects"}}]}</custom_config>
@@ -104,9 +104,9 @@
         <sys_id>b5da3cd3db89630055552bfa4b9619ca</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>test</sys_name>
-        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
         <sys_policy/>
-        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
         <sys_update_name>sys_report_b5da3cd3db89630055552bfa4b9619ca</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2018-10-14 18:16:16</sys_updated_on>

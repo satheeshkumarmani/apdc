@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>insider&#13;
+{&#13;
+  &#13;
+  &#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>&lt;div id="banner"&gt;&#13;
+  &lt;div id="cloud-scroll"&gt;  &lt;button class='myButt two'&gt;&#13;
+		&lt;div class='insider'&gt;&lt;/div&gt;    &#13;
+     &lt;div class="avatar-extra-large avatar-large avatar-container visible-lg"&gt; &#13;
+     &lt;div class="avatar soloAvatar centered"&gt; &#13;
+      &lt;div class="sub-avatar" ng-style="avatarPicture" style="background-image: url(satz.jpgx);"&gt;&lt;/div&gt; &#13;
+   &#13;
+     &lt;/div&gt; </description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>profile2</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) { 
+
+ }]]></link>
+        <name>profile2</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-12 14:27:39</sys_created_on>
+        <sys_id>cb5dafd21b26730032e9dc29bc4bcbc7</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>profile2</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sp_widget_cb5dafd21b26730032e9dc29bc4bcbc7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-12 14:38:38</sys_updated_on>
+        <template><![CDATA[ 
+		
+
+    <img src="satz.jpgx" class="img-responsive img-circle center-block" alt="Cinque Terre">]]></template>
+    </sp_widget>
+</record_update>

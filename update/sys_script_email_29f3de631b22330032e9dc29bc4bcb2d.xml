@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>test1</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[(function runMailScript(/* GlideRecord */ current, /* TemplatePrinter */ template,
+          /* Optional EmailOutbound */ email, /* Optional GlideRecord */ email_action,
+          /* Optional GlideRecord */ event) {
+	
+	
+	for (var prop in email_action) {
+
+
+          template.print(prop + ":" + email_action[prop]+ "\n");
+
+
+   }
+	
+	//template.print("<p>"+email_action.getFields());
+
+         GlideSysAttachment.copy('incident', current.sys_id, "sys_email", email_action.sys_id);
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-16 05:11:56</sys_created_on>
+        <sys_id>29f3de631b22330032e9dc29bc4bcb2d</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>test1</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_script_email_29f3de631b22330032e9dc29bc4bcb2d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-16 05:26:46</sys_updated_on>
+    </sys_script_email>
+</record_update>

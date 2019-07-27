@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
     <sys_scope_privilege action="INSERT_OR_UPDATE">
         <operation>execute</operation>
-        <source_scope display_value="apdc">8472deb0db01230055552bfa4b961970</source_scope>
+        <source_scope display_value="app">8472deb0db01230055552bfa4b961970</source_scope>
         <status>allowed</status>
         <sys_class_name>sys_scope_privilege</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -9,9 +9,9 @@
         <sys_id>1aa53f984fb7a300209b4a318110c7fb</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>SinglePartOutMsgWrapper.setLinkPart</sys_name>
-        <sys_package display_value="apdc" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
         <sys_policy/>
-        <sys_scope display_value="apdc">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
         <sys_update_name>sys_scope_privilege_1aa53f984fb7a300209b4a318110c7fb</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-02-19 17:03:24</sys_updated_on>

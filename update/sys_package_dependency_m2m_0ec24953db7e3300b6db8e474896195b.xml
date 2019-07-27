@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_package_dependency_m2m">
+    <sys_package_dependency_m2m action="INSERT_OR_UPDATE">
+        <dependency display_value="Incident" source="com.snc.incident">73eaee3e64a32300aadba650cb85d4c8</dependency>
+        <min_version>1.0.0</min_version>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-27 14:52:00</sys_created_on>
+        <sys_id>0ec24953db7e3300b6db8e474896195b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-27 14:52:00</sys_updated_on>
+    </sys_package_dependency_m2m>
+</record_update>

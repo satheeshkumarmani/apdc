@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description/>
+        <flush_cache>false</flush_cache>
+        <name/>
+        <record_for_rollback>false</record_for_rollback>
+        <run_once>true</run_once>
+        <script><![CDATA[var NVDJSONDataFeed = Class.create();
+NVDJSONDataFeed.prototype = {
+	initialize: function() {
+	},
+	
+	insertupdateCVE : function (cveItem){
+		//main function
+		var cveId;
+		var cweID ='';
+		var description ="";
+		
+		if(cveItem.cve.problemtype.problemtype_data.length && cveItem.cve.problemtype.problemtype_data[0].description.length){
+			cweID = cveItem.cve.problemtype.problemtype_data[0].description[0].value;
+		}
+		if( cveItem.cve.description.description_data.length){
+			description = cveItem.cve.description.description_data[0].value;
+		}
+		
+		
+		var gr = new GlideRecord("x_msca5_compliance_cve_vulnerability");
+		gr.get("cve_vulnerability_id", cveItem.cve.CVE_data_meta.ID);
+		gr.query();
+		if(gr.next())
+			{//update CVE
+			gr.cwe_id = cweID ;
+			gr.description = description;
+			var lastModifiedDate = cveItem.lastModifiedDate.replace('T',' ').replace('Z',':00');
+			var publishedDate = cveItem.publishedDate.replace('T',' ').replace('Z',':00');
+			gr.last_modified_date = lastModifiedDate;
+			gr.published_date  = publishedDate;
+			cveId = gr.update();
+			
+			//functions to check related records
+			this.cveImpacts(cveItem,cveId);
+			this.cveReferences(cveItem.cve.references.reference_data,cveId);
+			this.cveAffectedData(cveItem.cve.affects.vendor.vendor_data,cveId);
+			this.cveConfigurationData(cveItem.configurations.nodes,cveId);
+		}
+		else
+			{ //insert CVE
+			gr.initialize();
+			gr.cve_vulnerability_id = cveItem.cve.CVE_data_meta.ID;
+			gr.cwe_id = cweID ;
+			gr.description = description;
+			var lastModifieddate = cveItem.lastModifiedDate.replace('T',' ').replace('Z',':00');
+			var publisheddate = cveItem.publishedDate.replace('T',' ').replace('Z',':00');
+			gr.last_modified_date = lastModifieddate;
+			gr.published_date  = publisheddate;
+			cveId =gr.insert();
+			
+			//functions to check related records
+			this.cveImpacts(cveItem,cveId);
+			this.cveReferences(cveItem.cve.references.reference_data,cveId);
+			this.cveAffectedData(cveItem.cve.affects.vendor.vendor_data,cveId);
+			this.cveConfigurationData(cveItem.configurations.nodes,cveId);
+		}
+		
+		return cveId;
+	},
+	
+	
+	
+	//Importing Impacts
+	cveImpacts : function(cveItem,cveId)
+	{
+		
+		if(cveItem.impact.baseMetricV3){
+			var impact = new GlideRecord("x_msca5_compliance_cve_cvss_impact");
+			impact.addQuery('cve_vulnerability_id',cveId);
+			impact.addQuery('version',cveItem.impact.baseMetricV3.cvssV3.version);
+			impact.query();
+			if(impact.next())
+				{
+				
+				impact.vector_string = cveItem.impact.baseMetricV3.cvssV3.vectorString;
+				impact.attack_vector = cveItem.impact.baseMetricV3.cvssV3.attackVector;
+				impact.attack_complexity = cveItem.impact.baseMetricV3.cvssV3.attackComplexity;
+				impact.privileges_required = cveItem.impact.baseMetricV3.cvssV3.privilegesRequired;
+				impact.user_interaction = cveItem.impact.baseMetricV3.cvssV3.userInteraction;
+				impact.scope =cveItem.impact.baseMetricV3.cvssV3.scope;
+				impact.confidentiality_impact =cveItem.impact.baseMetricV3.cvssV3.confidentialityImpact;
+				impact.integrity_impact =cveItem.impact.baseMetricV3.cvssV3.integrityImpact;
+				impact.availability_impact=cveItem.impact.baseMetricV3.cvssV3.availabilityImpact;
+				impact.base_score =cveItem.impact.baseMetricV3.cvssV3.baseScore;
+				impact.base_severity =cveItem.impact.baseMetricV3.cvssV3.baseSeverity;
+				impact.exploitability_score =cveItem.impact.baseMetricV3.exploitabilityScore;
+				impact.impact_score =cveItem.impact.baseMetricV3.impactScore;
+				impact.update();
+			}
+			else{
+				impact.initialize();
+				impact.cve_vulnerability_id = cveId;
+				impact.version = cveItem.impact.baseMetricV3.cvssV3.version;
+				impact.vector_string = cveItem.impact.baseMetricV3.cvssV3.vectorString;
+				impact.attack_vector = cveItem.impact.baseMetricV3.cvssV3.attackVector;
+				impact.attack_complexity = cveItem.impact.baseMetricV3.cvssV3.attackComplexity;
+				impact.privileges_required = cveItem.impact.baseMetricV3.cvssV3.privilegesRequired;
+				impact.user_interaction = cveItem.impact.baseMetricV3.cvssV3.userInteraction;
+				impact.scope =cveItem.impact.baseMetricV3.cvssV3.scope;
+				impact.confidentiality_impact =cveItem.impact.baseMetricV3.cvssV3.confidentialityImpact;
+				impact.integrity_impact =cveItem.impact.baseMetricV3.cvssV3.integrityImpact;
+				impact.availability_impact=cveItem.impact.baseMetricV3.cvssV3.availabilityImpact;
+				impact.base_score =cveItem.impact.baseMetricV3.cvssV3.baseScore;
+				impact.base_severity =cveItem.impact.baseMetricV3.cvssV3.baseSeverity;
+				impact.exploitability_score =cveItem.impact.baseMetricV3.exploitabilityScore;
+				impact.impact_score =cveItem.impact.baseMetricV3.impactScore;
+				impact.insert();
+			}
+		}
+		
+		if(cveItem.impact.baseMetricV2){
+			var impact1 = new GlideRecord("x_msca5_compliance_cve_cvss_impact");
+			impact1.addQuery('cve_vulnerability_id',cveId);
+			impact1.addQuery('version',cveItem.impact.baseMetricV2.cvssV2.version);
+			impact1.query();
+			if(impact1.next())
+				{
+				impact1.vector_string = cveItem.impact.baseMetricV2.cvssV2.vectorString;
+				impact1.access_vector = cveItem.impact.baseMetricV2.cvssV2.accessVector;
+				impact1.access_complexity = cveItem.impact.baseMetricV2.cvssV2.accessComplexity;
+				impact1.authentication = cveItem.impact.baseMetricV2.cvssV2.authentication;
+				impact1.confidentiality_impact = cveItem.impact.baseMetricV2.cvssV2.confidentialityImpact;
+				impact1.integrity_impact =cveItem.impact.baseMetricV2.cvssV2.integrityImpact;
+				impact1.availability_impact =cveItem.impact.baseMetricV2.cvssV2.availabilityImpact;
+				impact1.base_score =cveItem.impact.baseMetricV2.cvssV2.baseScore;
+				impact1.base_severity=cveItem.impact.baseMetricV2.severity;
+				impact1.exploitability_score =cveItem.impact.baseMetricV2.exploitabilityScore;
+				impact1.impact_score =cveItem.impact.baseMetricV2.impactScore;
+				impact1.obtain_all_privileges =cveItem.impact.baseMetricV2.obtainAllPrivilege;
+				impact1.obtain_user_privileges =cveItem.impact.baseMetricV2.obtainUserPrivilege;
+				impact1.obtain_other_privileges =cveItem.impact.baseMetricV2.obtainOtherPrivilege;
+				impact1.user_interaction_required =cveItem.impact.baseMetricV2.userInteractionRequired;
+				impact1.update();
+			}
+			else{
+				impact1.initialize();
+				impact1.cve_vulnerability_id = cveId;
+				impact1.version = cveItem.impact.baseMetricV2.cvssV2.version;
+				impact1.vector_string = cveItem.impact.baseMetricV2.cvssV2.vectorString;
+				impact1.access_vector = cveItem.impact.baseMetricV2.cvssV2.accessVector;
+				impact1.access_complexity = cveItem.impact.baseMetricV2.cvssV2.accessComplexity;
+				impact1.authentication = cveItem.impact.baseMetricV2.cvssV2.authentication;
+				impact1.confidentiality_impact = cveItem.impact.baseMetricV2.cvssV2.confidentialityImpact;
+				impact1.integrity_impact =cveItem.impact.baseMetricV2.cvssV2.integrityImpact;
+				impact1.availability_impact =cveItem.impact.baseMetricV2.cvssV2.availabilityImpact;
+				impact1.base_score =cveItem.impact.baseMetricV2.cvssV2.baseScore;
+				impact1.base_severity=cveItem.impact.baseMetricV2.severity;
+				impact1.exploitability_score =cveItem.impact.baseMetricV2.exploitabilityScore;
+				impact1.impact_score =cveItem.impact.baseMetricV2.impactScore;
+				impact1.obtain_all_privileges =cveItem.impact.baseMetricV2.obtainAllPrivilege;
+				impact1.obtain_user_privileges =cveItem.impact.baseMetricV2.obtainUserPrivilege;
+				impact1.obtain_other_privileges =cveItem.impact.baseMetricV2.obtainOtherPrivilege;
+				impact1.user_interaction_required =cveItem.impact.baseMetricV2.userInteractionRequired;
+				impact1.insert();
+			}
+		}
+	},
+	
+	
+	
+	
+	//import references
+	cveReferences : function(refData,cveId){
+		
+		for(var ref=0;ref<refData.length;ref++)
+			{
+			cveReferenceData(refData[ref],cveId);
+		}
+		
+		function cveReferenceData(ref,cveId){
+			var references = new GlideRecord("x_msca5_compliance_cve_references");
+			references.addQuery('cve_vulnerability_id',cveId);
+			references.addQuery('url',ref.url);
+			references.query();
+			if(references.next()){
+				references.name = ref.name;
+				references.reference_source = ref.refsource;
+				references.tags = ref.tags.toString();
+				references.update();
+			}
+			else{
+				references.initialize();
+				references.cve_vulnerability_id = cveId;
+				references.name = ref.name;
+				references.url = ref.url;
+				references.reference_source = ref.refsource;
+				references.tags = ref.tags.toString();
+				references.insert();
+			}
+		}
+		
+		
+	},
+	
+	
+	// import affected list data
+	cveAffectedData : function(vendorData,cveId){
+		
+		for(var vd=0;vd<vendorData.length;vd++)
+			{
+			var vendor = new GlideRecord('x_msca5_compliance_cve_affects_list');
+			vendor.addQuery('cve_vulnerability_id',cveId);
+			vendor.addQuery('vendor_name',vendorData[vd].vendor_name);
+			vendor.query();
+			if(!vendor.next()){
+				var vendorID;
+				vendor.initialize();
+				vendor.vendor_name = vendorData[vd].vendor_name;
+				vendor.cve_vulnerability_id = cveId;
+				vendorID = vendor.insert();
+				
+				checkProduct(vendorData[vd].product.product_data,cveId,vendorID);
+				
+			}
+		}
+		
+		
+		
+		
+		function checkProduct(productData,cveID,vendorID)
+		{
+			for(var pd=0;pd<productData.length;pd++)
+				{
+				
+				var productID='';
+				var product = new GlideRecord('x_msca5_compliance_vendor_product');
+				product.addQuery('cve_vulnerability_id',cveId);
+				product.addQuery('vendor_name',vendorID);
+				product.addQuery('product_name',productData[pd].product_name);
+				product.query();
+				if(!product.next()){
+					product.initialize();
+					product.product_name = productData[pd].product_name;
+					product.vendor_name = vendorID;
+					product.cve_id = cveID;
+					productID = product.insert();
+					
+					checkVersion(productData[pd].version.version_data,cveID,vendorID,productID);
+				}
+			}
+		}
+		
+		
+		
+		function checkVersion(versionData,cveID,vendorID,productID)
+		{
+			
+			for(var vd=0;vd<versionData.length;vd++)
+				{
+				var version = new GlideRecord('x_msca5_compliance_product_version');
+				version.initialize();
+				version.product_name = productID;
+				version.cve_id = cveID;
+				version.vendor_name = vendorID;
+				version.version_value = versionData[vd].version_value;
+				version.version_affected_operator = versionData[vd].version_affected;
+				version.insert();
+			}
+		}
+	},
+	//import the configuaration data from cve json file
+	
+	cveConfigurationData : function(nodesData,cveId){
+		
+		//gs.info('Inside cveConfigurationData');
+		
+		for(var nd=0; nd<nodesData.length; nd++){
+			
+			var nodes = new GlideRecord('x_msca5_compliance_cve_configurations_nodes');
+			nodes.addQuery('cve_id',cveId);
+			nodes.addQuery('children_logic_operator',nodesData[nd].operator);
+			nodes.query();
+			if(!nodes.next()){
+				var nodesID;
+				nodes.initialize();
+				nodes.children_logic_operator = nodesData[nd].operator;
+				nodes.cve_id = cveId;
+				nodesID = nodes.insert();
+				
+				//gs.info("solg outside"+ nodesData[nd].children +" " +cveId);
+				if(nodesData[nd].children)
+					{
+					//gs.info("solg inside"+ nodesData[nd].children.length +" " +cveId);
+					checkChildNodes( nodesData[nd].children,cveId,nodesID);
+				}
+				else
+					{
+					//gs.info("solg inside"+ nodesData[nd].children.length +" " +cveId);
+					checkChildNodesDefault( nodesData[nd].cpe_match,cveId,nodesID);
+				}
+				
+				
+			}
+		}
+		
+		
+		function checkChildNodesDefault(cpeMatch,cveId,nodesID){
+			
+			var child = new GlideRecord('x_msca5_compliance_cve_configuration_children');
+					child.initialize();
+					child.cpe_match_logic_operator = 'NA';
+					child.configuration_node = nodesID;
+					//child.cve_vulnerability_id = cveId;
+					childID = child.insert();
+			
+			for(var cm=0, len = cpeMatch.length; cm<len;cm++)
+				{
+					createCPE(cpeMatch[cm].cpe_match,childID);
+				}	
+		}
+		
+		
+		
+		function checkChildNodes(childData,cveId,nodesID)
+		{
+			//gs.info('Inside checkChildNodes');
+			//gs.info("ChildNodes"+childData.length);
+			for(var cd=0;cd<childData.length;cd++)
+				{
+				//gs.info("ChildNodes"+childData[cd].length);
+				var childID;
+				var child = new GlideRecord('x_msca5_compliance_cve_configuration_children');
+				//child.addQuery('cve_vulnerability_id',cveId);
+				//child.addQuery('configuration_node',nodesID);
+				//child.addQuery('cpe_match_logic_operator',childData[cd].operator);
+				//child.query();
+				//if(!child.next()){
+					child.initialize();
+					child.cpe_match_logic_operator = childData[cd].operator;
+					child.configuration_node = nodesID;
+					//child.cve_vulnerability_id = cveId;
+					childID = child.insert();
+					
+					if(childData[cd].cpe_match)
+						{
+						//gs.info("solg cpe"+ childData[cd].cpe_match );
+						createCPE(childData[cd].cpe_match,childID);
+					}
+					
+				}
+			}
+			
+			function createCPE(cpeMatches,childID)
+			{
+				var cpeID;
+				//gs.info('Inside createCPE');
+				for(var cp=0;cp<cpeMatches.length;cp++)
+					{
+					//gs.info("inside CPE data"+ cpeMatches[cp].cpe23Uri);
+					var values =	cpeMatches[cp].cpe23Uri.split(':');
+					var cpe = new GlideRecord('x_msca5_compliance_cpe');
+					cpe.addQuery('uri',cpeMatches[cp].cpe23Uri);
+					cpe.query();
+					if(!cpe.next())
+						{
+						cpe.newRecord();
+						cpe.uri =cpeMatches[cp].cpe23Uri.toString();
+						cpe.cpe_version =values[1].toString();
+						cpe.type =values[2] ;
+						cpe.title = values[4] ;
+						cpe.product = values[4];
+						cpe.version=values[5];
+						cpe.update = values[6];
+						cpe.cve_vendor = values[3];
+						//cpe.insert();
+						
+// 						var record = new GlideRecord('x_msca5_compliance_cpe_vendor');
+// 						record.addQuery('cpe_vendor', values[3].toString());
+// 						record.query();
+// 						if (!record.next()){
+// 							// create vendor record here
+// 							record.newRecord();
+// 							record.cpe_vendor=values[3];
+// 							 record.insert();
+// 						}
+// 						else{
+// 							cpe.vendor = record.sys_id;
+// 						}
+							
+						// Need to insert match list before CPE is inserted
+						createMatchList(cpe.sys_id, childID, cpeMatches[cp].vulnerable);
+						cpeID =cpe.insert();
+					}
+					
+					
+					
+					
+					else
+						{
+						//cpeID = cpe.sys_id;
+						createMatchList(cpe.sys_id, childID, cpeMatches[cp].vulnerable);
+					}
+					
+					
+// 					var gr = new GlideRecord("x_msca5_compliance_cve_configuration_cpe_match_list");
+// 					gr.initialize();
+// 					gr.cpe_uri = cpeID;
+// 					gr.configuration_child =childID;
+// 					gr.cpe_vulnerable = cpeMatches[cp].vulnerable;
+// 					gr.insert();
+					
+					
+				}
+				
+			}
+		
+			function createMatchList(cpeID, childID, vulnerable) {
+				var gr = new GlideRecord("x_msca5_compliance_cve_configuration_cpe_match_list");
+				gr.initialize();
+				gr.cpe_uri = cpeID;
+				gr.configuration_child =childID;
+				gr.cpe_vulnerable = vulnerable;
+				gr.insert();
+			}
+		},
+		
+		type: 'NVDJSONDataFeed'
+	};]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-27 09:26:24</sys_created_on>
+        <sys_id>be3411e91b52330032e9dc29bc4bcbe9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_script_fix_be3411e91b52330032e9dc29bc4bcbe9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-27 09:26:24</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

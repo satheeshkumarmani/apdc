@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+	
+	var element1 = document.getElementById("p1");
+	var element2 = document.getElementById("p2");
+	var element3 = document.getElementById("p3");
+	var element4 = document.getElementById("p4");
+	
+	setTimeout(function(){	
+		
+		
+		
+		    element1.style.width = c.data.progressBar.p1Width;
+	        element1.classList.add("s1");
+		
+		    element2.style.width = c.data.progressBar.p2Width;
+	        element2.classList.add("s2");
+		
+		    element3.style.width = c.data.progressBar.p3Width;
+	        element3.classList.add("s3");
+		
+		    element4.style.width = c.data.progressBar.p4Width;
+	        element4.classList.add("s1");	
+	}, 10);
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css> .s1 {&#13;
+  width: 200px;&#13;
+  background: red;&#13;
+  -webkit-transition-property: width; /* Safari */&#13;
+  -webkit-transition-duration: 5s; /* Safari */&#13;
+  -webkit-transition-delay: 2s; /* Safari */&#13;
+  transition-property: width;&#13;
+  transition-duration: 3s;&#13;
+}&#13;
+&#13;
+.s2 {&#13;
+  width: 200px;&#13;
+  background: green;&#13;
+  -webkit-transition-property: width; /* Safari */&#13;
+  -webkit-transition-duration: 5s; /* Safari */&#13;
+  -webkit-transition-delay: 2s; /* Safari */&#13;
+  transition-property: width;&#13;
+  transition-duration: 3s;&#13;
+}&#13;
+&#13;
+.s3 {&#13;
+  width: 200px;&#13;
+  background: blue;&#13;
+  -webkit-transition-property: width; /* Safari */&#13;
+  -webkit-transition-duration: 5s; /* Safari */&#13;
+  -webkit-transition-delay: 2s; /* Safari */&#13;
+  transition-property: width;&#13;
+  transition-duration: 5s;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>&lt;div id="banner"&gt;&#13;
+  &lt;div id="cloud-scroll"&gt;  &lt;button class='myButt two'&gt;&#13;
+		&lt;div class='insider'&gt;&lt;/div&gt;    &#13;
+    &#13;
+    &lt;div class="avatar-extra-large avatar-large avatar-container visible-lg"&gt; &#13;
+     &lt;div class="avatar soloAvatar bottom"&gt; &#13;
+      &lt;div class="sub-avatar" ng-style="avatarPicture" style="background-image: url(satz.jpgx);"&gt;&lt;/div&gt; &#13;
+     &lt;/div&gt; </description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>profile</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) { 
+
+ }]]></link>
+        <name>profile</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	data.progressBar = {};
+	
+	data.progressBar.p1Width = "60%";
+	data.progressBar.p2Width = "90%";
+	data.progressBar.p3Width = "50%";
+	data.progressBar.p4Width = "75%";
+	
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-03 06:23:53</sys_created_on>
+        <sys_id>ab28675b1b12330032e9dc29bc4bcb2c</sys_id>
+        <sys_mod_count>54</sys_mod_count>
+        <sys_name>profile</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sp_widget_ab28675b1b12330032e9dc29bc4bcb2c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-15 06:47:13</sys_updated_on>
+        <template><![CDATA[<div>
+  
+  <div class="progress mx-auto" data-value='80'>
+          <span class="progress-left">
+                        <span class="progress-bar border-primary"></span>
+          </span>
+          <span class="progress-right">
+                        <span class="progress-bar border-primary"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div class="h2 font-weight-bold">80<sup class="small">%</sup></div>
+          </div>
+        </div>
+  
+  
+  
+  <br></div>
+<div class="progress">
+  <div class="progress-bar" id ="p1" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar" id ="p2" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar" id ="p3" role="progressbar"  aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar" id ="p4" role="progressbar"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar"  id ="p5" role="progressbar"  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

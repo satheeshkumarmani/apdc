@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element audit="true" extends="task" label="table" max_length="40" name="x_93700_apdc_table" type="collection">
-        <element label="auudi" max_length="40" name="u_audio_1" type="audio"/>
-        <element label="New Data Structure" mandatory="true" max_length="800" name="u_data_structure_1" type="data_structure"/>
+        <element attributes="edge_encryption_enabled=true" label="auudi" max_length="40" name="u_audio_1" type="audio"/>
+        <element attributes="edge_encryption_enabled=true" label="New Data Structure" mandatory="true" max_length="800" name="u_data_structure_1" type="data_structure"/>
     </element>
 </database>
