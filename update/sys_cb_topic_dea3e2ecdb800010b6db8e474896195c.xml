@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="INSERT_OR_UPDATE">
+        <applicability/>
+        <category/>
+        <connect_queue/>
+        <description/>
+        <flexible_conversation_switching>false</flexible_conversation_switching>
+        <graph>{
+  "graph_api_version": "1.0.13",
+  "goals": {
+    "0abcc430a8f04e4d842f0af2a64799fd": {
+      "id": "0abcc430a8f04e4d842f0af2a64799fd",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "9d90715ef4284e8b84e4d6b676c9c23d": {
+          "id": "9d90715ef4284e8b84e4d6b676c9c23d",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "1e04f27bb8134e03b452821026756c4c": {
+          "id": "1e04f27bb8134e03b452821026756c4c",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "d34c94fa918a423489007233a3f54775",
+          "edgeType": "Edge",
+          "source": "9d90715ef4284e8b84e4d6b676c9c23d",
+          "target": "1e04f27bb8134e03b452821026756c4c",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {}
+}</graph>
+        <key_phrases/>
+        <live_agent>false</live_agent>
+        <name>test</name>
+        <nlu_intent/>
+        <nlu_model/>
+        <nlu_provider>64c023c17300330021a044764df6a70e</nlu_provider>
+        <roles/>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-19 12:10:28</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>dea3e2ecdb800010b6db8e474896195c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>test</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_cb_topic_dea3e2ecdb800010b6db8e474896195c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-09-19 12:10:28</sys_updated_on>
+        <variables/>
+    </sys_cb_topic>
+    <sys_variable_value action="delete_multiple" query="document_key=dea3e2ecdb800010b6db8e474896195c"/>
+</record_update>

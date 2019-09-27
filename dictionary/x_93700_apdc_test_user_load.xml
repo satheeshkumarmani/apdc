@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="test user load" max_length="40" name="x_93700_apdc_test_user_load" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Additional contacts" max_length="200" name="u_additional_contacts" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.Account Name" label="CIRATS_ACCOUNT.Account Name" max_length="40" name="u_cirats_account_account_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.Account Type" label="CIRATS_ACCOUNT.Account Type" max_length="40" name="u_cirats_account_account_type" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.DPE delegate" label="CIRATS_ACCOUNT.DPE delegate" max_length="40" name="u_cirats_account_dpe_delegate" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.Industry" label="CIRATS_ACCOUNT.Industry" max_length="40" name="u_cirats_account_industry" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.Account Sector" label="CIRATS_ACCOUNT.Account Sector" max_length="40" name="u_cirats_accou_account_sector" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.Account Status" label="CIRATS_ACCOUNT.Account Status" max_length="40" name="u_cirats_accou_account_status" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.Customer Notification required" label="CIRATS_ACCOUNT.Customer Notification required" max_length="40" name="u_cirats_accou_ation_required" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.Customer email addresses (separated by semi-colon)" label="CIRATS_ACCOUNT.Customer email addresses (separated by semi-colon)" max_length="197" name="u_cirats_accou_by_semi_colon_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.Lead DPE Email" label="CIRATS_ACCOUNT.Lead DPE Email" max_length="40" name="u_cirats_accou_lead_dpe_email" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=CIRATS_ACCOUNT.Primary Country" label="CIRATS_ACCOUNT.Primary Country" max_length="40" name="u_cirats_accou_rimary_country" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Department Manager ATTUID" max_length="40" name="u_department_manager_attuid" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Department Manager NAME (AT&amp;T only)" max_length="40" name="u_department_m_me__at_t_only_" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=GPS.Account Name" label="GPS.Account Name" max_length="48" name="u_gps_account_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Item Type" label="Item Type" max_length="40" name="u_item_type" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Path" label="Path" max_length="40" name="u_path" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Primary Support ATTUID" max_length="40" name="u_primary_support_attuid" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Primary Support Name" max_length="40" name="u_primary_support_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Support Team Name" max_length="40" name="u_support_team_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Team type" max_length="40" name="u_team_type" type="string"/>
+    </element>
+</database>

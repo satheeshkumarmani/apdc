@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_nlu_model">
+    <sys_nlu_model action="INSERT_OR_UPDATE">
+        <confidence_threshold>0.6</confidence_threshold>
+        <description>predictive model </description>
+        <display_name>test model</display_name>
+        <name>global_x_93700_apdc_test_model</name>
+        <state>Draft</state>
+        <sys_class_name>sys_nlu_model</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-13 09:23:23</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>dce38beedb333300b6db8e4748961980</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>test model</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_nlu_model_dce38beedb333300b6db8e4748961980</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-09-13 09:23:23</sys_updated_on>
+    </sys_nlu_model>
+</record_update>

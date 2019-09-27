@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="test user" max_length="40" name="x_93700_apdc_test_user" type="collection">
+        <element label="Group" max_length="40" name="group" type="string"/>
+        <element label="user" max_length="40" name="user" type="string"/>
+    </element>
+</database>

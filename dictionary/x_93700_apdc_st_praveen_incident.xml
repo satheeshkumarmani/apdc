@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Praveen  Incident" max_length="40" name="x_93700_apdc_st_praveen_incident" type="collection">
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Number" max_length="40" name="number" type="string"/>
+        <element label="Short Description" max_length="40" name="short_description" type="string"/>
+    </element>
+</database>

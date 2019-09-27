@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_script">
+    <sys_transform_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <map display_value="test">218a4ff1db633300b6db8e4748961900</map>
+        <order>100</order>
+        <script><![CDATA[(function runTransformScript(source, map, log, target /*undefined onStart*/ ) {
+
+	// Add your code here
+	
+	
+	var group = source.u_support_team_name;
+		
+	var mr   = source.u_department_manager_attuid;
+	
+	var ps = source.u_primary_support_attuid;
+	var ac =  source.u_additional_contacts;
+	
+	
+	gs.info(group +mr+ps+ac);
+		
+		 addAdditionalContacts(group,ac);
+	     addAdditionalContacts(group,mr);
+	     addAdditionalContacts(group,ps);
+	     
+		
+	
+	
+	function addAdditionalContacts(group,userList){
+		if(userList){
+		
+			var usersF1 = userList.split(',');//format1
+			var usersF2 = userList.split(';');//format2
+			
+			var users = (usersF1.length == 1) ? usersF2 : usersF1;
+			
+			
+		for (var i =0,len = users.length; i<len; i++){
+			
+			
+			if( users[i] == ''){
+			return;
+		}
+			
+		    var record = new GlideRecord('x_93700_apdc_test_user');
+		    record.addQuery('user',users[i]);
+			record.addQuery("group",group);
+		    record.query();
+		      if(!record.next()){
+			      record.initialize(); 
+			      record.user = users[i]; 
+			      record.group   = group;
+			      record.insert();
+		        }	
+			
+		   }
+		}
+		
+		
+	
+		
+		
+				
+	}
+		
+	
+	ignore =true;
+	
+	
+	
+	
+	
+	
+	
+	
+	ignore = true;
+	
+	
+
+})(source, map, log, target);]]></script>
+        <sys_class_name>sys_transform_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-08-29 16:15:18</sys_created_on>
+        <sys_id>76fa4735db633300b6db8e4748961943</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>onBefore</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_transform_script_76fa4735db633300b6db8e4748961943</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-08-29 16:40:58</sys_updated_on>
+        <when>onBefore</when>
+    </sys_transform_script>
+</record_update>

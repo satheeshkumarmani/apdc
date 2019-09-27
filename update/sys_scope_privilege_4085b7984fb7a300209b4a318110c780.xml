@@ -16,7 +16,7 @@
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-02-19 17:02:42</sys_updated_on>
         <target_name>VAContextualSearchUtil</target_name>
-        <target_scope display_value="">134450a0b3781300787162ac16a8dc1e</target_scope>
+        <target_scope display_value="ITSM Virtual Agent Conversations">134450a0b3781300787162ac16a8dc1e</target_scope>
         <target_type>sys_script_include</target_type>
     </sys_scope_privilege>
 </record_update>

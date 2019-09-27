@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="DELETE">
+        <applicability/>
+        <connect_queue display_value="Virtual Agent Support">f4d701b1b3900300f7d1a13816a8dc8e</connect_queue>
+        <description/>
+        <graph>{
+  "graph_api_version": "1.0.3",
+  "goals": {
+    "339e730b4fef43cc8fee0c3f2c77e2d9": {
+      "id": "339e730b4fef43cc8fee0c3f2c77e2d9",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "28c41a8f59fd473c96715e6b1f325bab": {
+          "id": "28c41a8f59fd473c96715e6b1f325bab",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "50813ab015cc4d4ba99e05bb086802a3": {
+          "id": "50813ab015cc4d4ba99e05bb086802a3",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "dd6247bff79a44d68830e6136fb29fe9": {
+          "id": "dd6247bff79a44d68830e6136fb29fe9",
+          "stepType": "Prompt",
+          "name": "n1",
+          "prompt": {
+            "value": "Good Morning , How can i help you?",
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": "",
+          "optional": false,
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "200cf70c498a48ba82eb6a7e585d2af0"
+        },
+        "954b45853c8641cfb57efe1d81796b66": {
+          "stepType": "CarouselPrompt",
+          "name": "n2",
+          "prompt": {
+            "value": "",
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "Thanks for your respnse",
+            "mode": "simple"
+          },
+          "applicability": "",
+          "optional": false,
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "085ded627f5e492797210034179ca948",
+          "id": "954b45853c8641cfb57efe1d81796b66",
+          "carouselLabel": {
+            "value": "hello",
+            "mode": "simple"
+          },
+          "carouselItemExpression": "(function execute() {\n    /* Code your script logic here.  When defining your enumeration list in javascript\n       ensure that you assign keys of Name, Value, and Body. For example:\n */\n       var options = [];\n       options.push(\n            {\n                'Name': 'name1',\n                'Value': 'value_1',\n                'Body': 'https://somehost/somepath/somepic1.jpg'\n            }\n       );\n       options.push(\n            {\n                'Name': 'name2',\n                'Value': 'value_2',\n                'Body': 'https://somehost/somepath/somepic2.jpg'\n            }\n       );\n       return options;\n   \n\n    var options = []; // add options here...\n    return options;\n})()\n",
+          "noRecordsResponseMsg": {
+            "value": "(function execute() {\n    /* Return a quoted string.  For example:\n */\n       var result;\n       if (vaInputs.first_name == 'Bill') {\n           return gs.getMessage('hi there {0}', [vaInputs.first_name]);\n       } else {\n           return gs.getMessage('how are you {0}', [vaInputs.last_name]);\n       }\n   \n    return '';\n})()\n",
+            "mode": "script"
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "e64a18de41f44488b7be83ea84fcaec2",
+          "edgeType": "Edge",
+          "source": "28c41a8f59fd473c96715e6b1f325bab",
+          "target": "dd6247bff79a44d68830e6136fb29fe9",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "dff03113a8bf4e00a6d61f1109f1de2e",
+          "edgeType": "Edge",
+          "source": "dd6247bff79a44d68830e6136fb29fe9",
+          "target": "954b45853c8641cfb57efe1d81796b66",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "ef0978a3737e45dd8334a9a44ae235bd",
+          "edgeType": "Edge",
+          "source": "954b45853c8641cfb57efe1d81796b66",
+          "target": "50813ab015cc4d4ba99e05bb086802a3",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "2505ea4596bc4b0aa2a3225df516d0f7": {
+      "id": "2505ea4596bc4b0aa2a3225df516d0f7",
+      "name": "LiveAgent_csm_queue",
+      "value": {
+        "mode": "simple",
+        "value": "f4d701b1b3900300f7d1a13816a8dc8e"
+      },
+      "varType": "script"
+    },
+    "f9e73d7a6ee34de29f3a58c39c034869": {
+      "id": "f9e73d7a6ee34de29f3a58c39c034869",
+      "name": "LiveAgent_itsm_queue",
+      "value": {
+        "mode": "simple",
+        "value": "f4d701b1b3900300f7d1a13816a8dc8e"
+      },
+      "varType": "script"
+    },
+    "200cf70c498a48ba82eb6a7e585d2af0": {
+      "id": "200cf70c498a48ba82eb6a7e585d2af0",
+      "name": "n1",
+      "label": "N1",
+      "varType": "string"
+    },
+    "085ded627f5e492797210034179ca948": {
+      "id": "085ded627f5e492797210034179ca948",
+      "name": "n2",
+      "label": "Carousel 34",
+      "varType": "carousel-image"
+    }
+  }
+}</graph>
+        <key_phrases>incident,issue,not working'</key_phrases>
+        <live_agent>false</live_agent>
+        <name>incident</name>
+        <roles/>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-01-24 09:55:25</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>b75a18484f5f2300209b4a318110c709</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>incident</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_cb_topic_b75a18484f5f2300209b4a318110c709</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-01-24 10:37:09</sys_updated_on>
+        <variables/>
+    </sys_cb_topic>
+    <sys_variable_value action="delete_multiple" query="document_key=b75a18484f5f2300209b4a318110c709"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="app">8472deb0db01230055552bfa4b961970</application>
+        <file_path/>
+        <instance_id>df1c0847dba053048264f70fbf9619e0</instance_id>
+        <instance_name>dev51484</instance_name>
+        <name>sys_cb_topic_b75a18484f5f2300209b4a318110c709</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic"><sys_cb_topic action="INSERT_OR_UPDATE"><applicability/><connect_queue display_value="Virtual Agent Support">f4d701b1b3900300f7d1a13816a8dc8e</connect_queue><description/><graph>{
+  "graph_api_version": "1.0.3",
+  "goals": {
+    "339e730b4fef43cc8fee0c3f2c77e2d9": {
+      "id": "339e730b4fef43cc8fee0c3f2c77e2d9",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "28c41a8f59fd473c96715e6b1f325bab": {
+          "id": "28c41a8f59fd473c96715e6b1f325bab",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "50813ab015cc4d4ba99e05bb086802a3": {
+          "id": "50813ab015cc4d4ba99e05bb086802a3",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "dd6247bff79a44d68830e6136fb29fe9": {
+          "id": "dd6247bff79a44d68830e6136fb29fe9",
+          "stepType": "Prompt",
+          "name": "n1",
+          "prompt": {
+            "value": "Good Morning , How can i help you?",
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": "",
+          "optional": false,
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "200cf70c498a48ba82eb6a7e585d2af0"
+        },
+        "954b45853c8641cfb57efe1d81796b66": {
+          "stepType": "CarouselPrompt",
+          "name": "n2",
+          "prompt": {
+            "value": "",
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "Thanks for your respnse",
+            "mode": "simple"
+          },
+          "applicability": "",
+          "optional": false,
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "085ded627f5e492797210034179ca948",
+          "id": "954b45853c8641cfb57efe1d81796b66",
+          "carouselLabel": {
+            "value": "hello",
+            "mode": "simple"
+          },
+          "carouselItemExpression": "(function execute() {\n    /* Code your script logic here.  When defining your enumeration list in javascript\n       ensure that you assign keys of Name, Value, and Body. For example:\n */\n       var options = [];\n       options.push(\n            {\n                'Name': 'name1',\n                'Value': 'value_1',\n                'Body': 'https://somehost/somepath/somepic1.jpg'\n            }\n       );\n       options.push(\n            {\n                'Name': 'name2',\n                'Value': 'value_2',\n                'Body': 'https://somehost/somepath/somepic2.jpg'\n            }\n       );\n       return options;\n   \n\n    var options = []; // add options here...\n    return options;\n})()\n",
+          "noRecordsResponseMsg": {
+            "value": "(function execute() {\n    /* Return a quoted string.  For example:\n */\n       var result;\n       if (vaInputs.first_name == 'Bill') {\n           return gs.getMessage('hi there {0}', [vaInputs.first_name]);\n       } else {\n           return gs.getMessage('how are you {0}', [vaInputs.last_name]);\n       }\n   \n    return '';\n})()\n",
+            "mode": "script"
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "e64a18de41f44488b7be83ea84fcaec2",
+          "edgeType": "Edge",
+          "source": "28c41a8f59fd473c96715e6b1f325bab",
+          "target": "dd6247bff79a44d68830e6136fb29fe9",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "dff03113a8bf4e00a6d61f1109f1de2e",
+          "edgeType": "Edge",
+          "source": "dd6247bff79a44d68830e6136fb29fe9",
+          "target": "954b45853c8641cfb57efe1d81796b66",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "ef0978a3737e45dd8334a9a44ae235bd",
+          "edgeType": "Edge",
+          "source": "954b45853c8641cfb57efe1d81796b66",
+          "target": "50813ab015cc4d4ba99e05bb086802a3",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "2505ea4596bc4b0aa2a3225df516d0f7": {
+      "id": "2505ea4596bc4b0aa2a3225df516d0f7",
+      "name": "LiveAgent_csm_queue",
+      "value": {
+        "mode": "simple",
+        "value": "f4d701b1b3900300f7d1a13816a8dc8e"
+      },
+      "varType": "script"
+    },
+    "f9e73d7a6ee34de29f3a58c39c034869": {
+      "id": "f9e73d7a6ee34de29f3a58c39c034869",
+      "name": "LiveAgent_itsm_queue",
+      "value": {
+        "mode": "simple",
+        "value": "f4d701b1b3900300f7d1a13816a8dc8e"
+      },
+      "varType": "script"
+    },
+    "200cf70c498a48ba82eb6a7e585d2af0": {
+      "id": "200cf70c498a48ba82eb6a7e585d2af0",
+      "name": "n1",
+      "label": "N1",
+      "varType": "string"
+    },
+    "085ded627f5e492797210034179ca948": {
+      "id": "085ded627f5e492797210034179ca948",
+      "name": "n2",
+      "label": "Carousel 34",
+      "varType": "carousel-image"
+    }
+  }
+}</graph><key_phrases>incident,issue,not working'</key_phrases><live_agent>false</live_agent><name>incident</name><roles/><sys_class_name>sys_cb_topic</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2019-01-24 09:55:25</sys_created_on><sys_domain>global</sys_domain><sys_id>b75a18484f5f2300209b4a318110c709</sys_id><sys_mod_count>3</sys_mod_count><sys_name>incident</sys_name><sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package><sys_policy/><sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope><sys_update_name>sys_cb_topic_b75a18484f5f2300209b4a318110c709</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2019-01-24 10:37:09</sys_updated_on><variables/></sys_cb_topic><sys_variable_value action="delete_multiple" query="document_key=b75a18484f5f2300209b4a318110c709"/></record_update>]]></payload>
+        <payload_hash>-1897995385</payload_hash>
+        <record_name>incident</record_name>
+        <reverted_from/>
+        <source>d0c2c553db7e3300b6db8e4748961915</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-27 14:52:03</sys_created_on>
+        <sys_id>26c28953db7e3300b6db8e4748961983</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16c33ead3350000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-27 14:52:03</sys_updated_on>
+        <type>Topic</type>
+        <update_guid>e2c28953527e3300291ba58dd4568c83</update_guid>
+        <update_guid_history>d6928913c67e33001d0b7c3bc508cc2c:-1458443075,d6a0c91b5c3e33002254a11259811d77:-1458443075,cbf7648cbe2d3300d8b7b8ad5d8719ec:1511425724</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-11 04:42:05</sys_created_on>
+        <sys_db_object display_value="" name="sys_cb_topic">sys_cb_topic</sys_db_object>
+        <sys_id>685ee927ffa5493594ba15047d9fe9d1</sys_id>
+        <sys_metadata>b75a18484f5f2300209b4a318110c709</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>incident</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_scope_delete display_value="">615e18ac261241e4acd9eeaa41e61f10</sys_scope_delete>
+        <sys_update_name>sys_cb_topic_b75a18484f5f2300209b4a318110c709</sys_update_name>
+        <sys_update_version display_value="sys_cb_topic_b75a18484f5f2300209b4a318110c709">26c28953db7e3300b6db8e4748961983</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-09-11 04:42:05</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
