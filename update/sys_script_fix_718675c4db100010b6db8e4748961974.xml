@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description>table_nameSTARTSWITHincident^table_nameINincident</description>
+        <flush_cache>false</flush_cache>
+        <name>inc</name>
+        <record_for_rollback>false</record_for_rollback>
+        <run_once>true</run_once>
+        <script><![CDATA[var incidentArray = [];
+
+var incident = new GlideRecord("incident");
+     incident.addEncodedQuery("closed_at<javascript:gs.beginningOfLast3Months()");
+     incident.query();
+while(incident.next()) {
+	incidentArray.push(incident.sys_id.toString());	
+   
+}
+
+var atmt = new GlideRecord("sys_attachment_list");
+    atmt.addQuery("table_name", "incident");
+    atmt.addEncodedQuery("table_sys_idIN"+incidentArray.toString());
+    atmt.setLimit(100);
+    atmt.deleteMultiple();
+
+
+
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-30 05:55:22</sys_created_on>
+        <sys_id>718675c4db100010b6db8e4748961974</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>inc</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_script_fix_718675c4db100010b6db8e4748961974</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-09-30 06:13:07</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

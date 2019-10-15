@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description>1) HTML:&#13;
+&#13;
+&lt;div&gt;&#13;
+&lt;!-- your widget template --&gt;&#13;
+&lt;div class="row"&gt;&#13;
+&lt;select style="min-width:150px;" ng-model="data.newAsset" ng-options="item for item in modelCat"&gt;&lt;/select&gt;&#13;
+&lt;/div&gt;&#13;
+&#13;
+&#13;
+&lt;div&gt;&#13;
+&lt;button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Click to confirm" ng-click="c.addNewAsset()"&gt;&#13;
+&lt;span&gt;Add&lt;/span&gt;&#13;
+&lt;/button&gt;&#13;
+&lt;/div&gt;&#13;
+&#13;
+&lt;/div&gt;&#13;
+&#13;
+ &#13;
+&#13;
+2) Client Controller:&#13;
+&#13;
+function($scope) {&#13;
+/* widget controller */&#13;
+var c = this;&#13;
+&#13;
+$scope.modelCat = ['----None----','USA','India'];&#13;
+&#13;
+c.addNewAsset = function(){&#13;
+c.data.action = "pluscode";&#13;
+c.data.id = $scope.data.newAsset;&#13;
+c.server.update().then(function(data) { &#13;
+//console.log("message", data.message)&#13;
+&#13;
+}) &#13;
+}&#13;
+}&#13;
+&#13;
+ &#13;
+&#13;
+3) Server:&#13;
+&#13;
+(function() {&#13;
+/* populate the 'data' object */&#13;
+/* e.g., data.table = $sp.getValue('table'); */&#13;
+if (input.action == 'pluscode') {&#13;
+console.log(input.id);&#13;
+var gr = new GlideRecord('table_name');//Your table name here. i am creating a record in backend table here. You can change query has per need&#13;
+gr.initialize();&#13;
+gr.country = input.id;&#13;
+gr.insert();&#13;
+}&#13;
+})();</description>
+        <flush_cache>false</flush_cache>
+        <name>html to table insertion template</name>
+        <record_for_rollback>false</record_for_rollback>
+        <run_once>true</run_once>
+        <script/>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-29 15:00:56</sys_created_on>
+        <sys_id>1c7a26ffdbc00010b6db8e474896197c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>html to table insertion template</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_script_fix_1c7a26ffdbc00010b6db8e474896197c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-09-29 15:00:56</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

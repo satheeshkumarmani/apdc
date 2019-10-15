@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+	
+	c.location = {
+							displayValue: "100 South Charles Street, Baltimore,MD",
+							value: "25ab9c4d0a0a0bb300f7dabdc0ca7c1c",
+							name: 'location'
+						};
+	
+	
+	
+	
+	c.clear = function() {
+						c.location = {
+							displayValue: "",
+							value: "",
+							name: 'location'
+						};
+};
+	
+	c.changeFields = function () {
+		
+		  c.server.get({loc : c.location.value,"topic" : c.topic}).then(function(r) {            
+                   alert(r.data.value) ; 
+        });   
+		
+		c.data.showErrorMsg = true;
+		c.data.showConnectChat = true;
+		c.data.checkReference = true;
+   };
+
+	
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.loader {
+  margin-left: 40%;
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) { 
+
+ }]]></link>
+        <name>record picker</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	if(input)
+		{
+			gs.addInfoMessage("inside");
+			
+			data.value ="test"
+		}
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-27 15:04:33</sys_created_on>
+        <sys_id>16281093db040010b6db8e47489619d8</sys_id>
+        <sys_mod_count>55</sys_mod_count>
+        <sys_name>record picker</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sp_widget_16281093db040010b6db8e47489619d8</sys_update_name>
+        <sys_updated_by>midserver</sys_updated_by>
+        <sys_updated_on>2019-10-12 08:19:44</sys_updated_on>
+        <template><![CDATA[	
+
+
+<div >
+
+           <img src="portal-loading-spinner.svg" class="loading-spinner"/>
+
+       </div>
+
+  <div ng-if="true">
+         <div class="loader"></div>
+          </div>
+
+<table style="width:100%">
+ 
+  <tr><td><sn-record-picker sn-disabled='false' field="c.location" table="'cmn_location'" display-field="'name'" value-field="'sys_id'" search-fields="'name'" page-size="20" >  </sn-record-picker></td>
+    
+    <td> &nbsp; &nbsp;<i ng-click="c.clear()" class="glyphicon glyphicon-remove" style="font-size:25px;color:red;"> </i></td></tr>
+  
+</table>
+
+     
+ <p><span style="color:red;">*</span>Please confirm your current location: <sn-record-picker on-change="c.changeFields()"  field="c.location" table="'cmn_location'" display-field="'name'" value-field="'sys_id'" search-fields="'name'" page-size="100" ></sn-record-picker></p>
+      
+        <p><select class="form-control" id="sel1" ng-model ="c.topic" >
+        <option>Select</option>  
+    	  <option>Mobile Device</option>
+        <option>Phone</option>
+        <option>Laptop</option>
+        <option>Desktop related</option>
+          <option>Supply Chain Applications related</option>
+           <option>HR &amp; Payroll related</option>
+      </select>
+
+
+
+ 
+    ]]></template>
+    </sp_widget>
+</record_update>

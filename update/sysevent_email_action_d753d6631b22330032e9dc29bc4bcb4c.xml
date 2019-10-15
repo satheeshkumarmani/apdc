@@ -38,6 +38,8 @@
         <message_html><![CDATA[<p>${mail_script:test1}</p>]]></message_html>
         <message_list/>
         <message_text/>
+        <messaging_channels/>
+        <messaging_content/>
         <name>incident updated</name>
         <omit_watermark>false</omit_watermark>
         <order>100</order>

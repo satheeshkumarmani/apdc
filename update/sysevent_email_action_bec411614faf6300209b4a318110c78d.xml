@@ -38,6 +38,8 @@
         <message_html/>
         <message_list/>
         <message_text/>
+        <messaging_channels/>
+        <messaging_content/>
         <name/>
         <omit_watermark>false</omit_watermark>
         <order>100</order>

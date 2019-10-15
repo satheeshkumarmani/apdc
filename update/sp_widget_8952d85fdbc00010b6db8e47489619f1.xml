@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) { 
+
+ }]]></link>
+        <name>simple list model</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	var results;
+ var sc = new GlideRecord('sc_cat_item');
+		sc.addActiveQuery();
+		
+		sc.setLimit(5);
+		sc.orderByDesc("ir_query_score");
+		sc.query();
+		var results = [];
+		while (sc.next()) {
+			if (!$sp.canReadRecord(sc))
+				continue;
+
+			var item = {};
+			$sp.getRecordDisplayValues(item, sc, 'name,price,sys_id');
+			item.category = sc.getValue('category');
+			results.push(item);
+		}
+	data.items = results
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-27 14:39:07</sys_created_on>
+        <sys_id>8952d85fdbc00010b6db8e47489619f1</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>simple list model</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sp_widget_8952d85fdbc00010b6db8e47489619f1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-09-27 14:53:47</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default">
+ <div class="panel-heading">Request an item from the catalog</div>
+   <ul class="list-group result-container " >
+     <li class="list-group-item" ng-repeat="item in c.data.items">
+       <a href>{{item.name}}</a><span class="pull-right">{{item.price}}</span>
+     </li>
+   </ul>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>
