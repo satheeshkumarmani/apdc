@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Image Testing" max_length="40" name="x_93700_apdc_image_testing" type="collection">
+        <element label="image" max_length="40" name="image" type="user_image"/>
+        <element label="Image Data" max_length="200000" name="image_data" type="string"/>
+    </element>
+</database>

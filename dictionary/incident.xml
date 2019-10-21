@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="email_client=true,all_tables.query_hints=true,hasWorkflow=true,live_feed=true" audit="true" extends="task" label="Incidencia" max_length="40" name="incident" sizeclass="1065" text_index="true" type="collection">
+    <element attributes="email_client=true,all_tables.query_hints=true,hasWorkflow=true,live_feed=true" audit="true" extends="task" label="Incidencia" max_length="40" name="incident" sizeclass="1082" text_index="true" type="collection">
         <element attributes="edge_encryption_enabled=true" choice="1" label="test" max_length="40" name="x_93700_apdc_testest" type="choice">
             <choice/>
         </element>

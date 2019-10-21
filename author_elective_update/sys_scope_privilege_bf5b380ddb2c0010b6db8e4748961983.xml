@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="DELETE">
+        <operation>delete</operation>
+        <source_scope display_value="app">8472deb0db01230055552bfa4b961970</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-15 14:23:10</sys_created_on>
+        <sys_id>bf5b380ddb2c0010b6db8e4748961983</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sys_attachment</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_scope_privilege_bf5b380ddb2c0010b6db8e4748961983</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-15 14:23:10</sys_updated_on>
+        <target_name>sys_attachment</target_name>
+        <target_scope display_value="Global">global</target_scope>
+        <target_type>sys_db_object</target_type>
+    </sys_scope_privilege>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="app">8472deb0db01230055552bfa4b961970</application>
+        <file_path/>
+        <instance_id>df1c0847dba053048264f70fbf9619e0</instance_id>
+        <instance_name>dev51484</instance_name>
+        <name>sys_scope_privilege_bf5b380ddb2c0010b6db8e4748961983</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege"><sys_scope_privilege action="INSERT_OR_UPDATE"><operation>delete</operation><source_scope display_value="app">8472deb0db01230055552bfa4b961970</source_scope><status>allowed</status><sys_class_name>sys_scope_privilege</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2019-10-15 14:23:10</sys_created_on><sys_id>bf5b380ddb2c0010b6db8e4748961983</sys_id><sys_mod_count>0</sys_mod_count><sys_name>sys_attachment</sys_name><sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package><sys_policy/><sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope><sys_update_name>sys_scope_privilege_bf5b380ddb2c0010b6db8e4748961983</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2019-10-15 14:23:10</sys_updated_on><target_name>sys_attachment</target_name><target_scope display_value="Global">global</target_scope><target_type>sys_db_object</target_type></sys_scope_privilege></record_update>]]></payload>
+        <payload_hash>1847985430</payload_hash>
+        <record_name>sys_attachment</record_name>
+        <reverted_from/>
+        <source>5ba2c513db7e3300b6db8e47489619d0</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-15 14:23:10</sys_created_on>
+        <sys_id>fb5bb80ddb2c0010b6db8e474896196f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16dcfcd23690000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-15 14:23:10</sys_updated_on>
+        <type>Cross scope privilege</type>
+        <update_guid>ff5bb80dce2c0010135af9aca9a5766e</update_guid>
+        <update_guid_history>ff5bb80dce2c0010135af9aca9a5766e:1847985430</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-15 14:32:46</sys_created_on>
+        <sys_db_object display_value="" name="sys_scope_privilege">sys_scope_privilege</sys_db_object>
+        <sys_id>4b342a1d5d254f6c8178f4abf4a74110</sys_id>
+        <sys_metadata>bf5b380ddb2c0010b6db8e4748961983</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sys_attachment</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_scope_delete display_value="">615e18ac261241e4acd9eeaa41e61f10</sys_scope_delete>
+        <sys_update_name>sys_scope_privilege_bf5b380ddb2c0010b6db8e4748961983</sys_update_name>
+        <sys_update_version display_value="sys_scope_privilege_bf5b380ddb2c0010b6db8e4748961983">fb5bb80ddb2c0010b6db8e474896196f</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-15 14:32:46</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
