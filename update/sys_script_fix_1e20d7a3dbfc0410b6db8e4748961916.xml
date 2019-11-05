@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description/>
+        <flush_cache>false</flush_cache>
+        <name>report on multiple assignments</name>
+        <record_for_rollback>false</record_for_rollback>
+        <run_once>true</run_once>
+        <script><![CDATA[  var querystring = 'assigned_toISNOTEMPTY';
+ var userArray =[];
+
+         var computer = new GlideRecord('cmdb_ci_computer');
+
+
+         computer.addEncodedQuery(querystring);
+
+
+         computer.query();
+
+
+         while (computer.next()) {
+  
+			var  assignments;
+
+				var count = new GlideAggregate('cmdb_ci_computer');
+				count.addQuery('assigned_to',computer.assigned_to.toString());
+				count.addAggregate('COUNT');
+				count.query();
+				var incidents = 0;
+				if(count.next()) {
+                  assignments = count.getAggregate('COUNT');
+				}
+		if(assignments >1  && userArray.index(computer.assigned_to.toString())){
+
+               userArray.push(computer.getValue('assigned_to'));
+			
+		}
+
+
+         }
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-11-05 05:58:20</sys_created_on>
+        <sys_id>1e20d7a3dbfc0410b6db8e4748961916</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>report on multiple assignments</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_script_fix_1e20d7a3dbfc0410b6db8e4748961916</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-11-05 05:58:49</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>
