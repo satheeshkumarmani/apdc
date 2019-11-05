@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function cdBannerController($scope, $sce, $timeout, $window, cdAnalytics) { 
+
+	var c = this;
+	var contentsViewed = {};
+
+	$scope.clickAction = 'Banner Clickthrough';
+
+	$scope.loadData = function(callback) {		
+		$scope.data.action = "loadData";
+		$scope.server.update().then(callback);
+	};
+
+	$scope.preventDefault = function($event){
+		$event.preventDefault();
+	};
+
+	$scope.swipeRight = function(){
+		angular.element("#"+$scope.data.spInstanceId).carousel('prev');
+	};
+
+	$scope.swipeLeft = function(){
+		angular.element("#"+$scope.data.spInstanceId).carousel('next');
+	};
+
+	$scope.onButtonClick = function(bItem) {
+		cdAnalytics.trackEvent('Banner Clickthrough', bItem, bItem.button_text);
+	};
+
+	$scope.$watch('data.spInstanceId', function(newValue) {
+		if (!newValue)
+			return;
+
+		$timeout(function() {
+			$('#' + newValue).on('slid.bs.carousel', function(e){
+				$(e.relatedTarget).find('.c-content').each(function(i, el) {
+					var idx = parseInt($(el).attr('data-idx'));
+					var bItem = $scope.data.items[idx];
+
+					trackImpression(bItem);
+				});
+			});
+		});
+	});
+
+	$scope.getStyle = function(bItem) {
+		if (bItem.use_custom_html !== 'true')
+			return {'background-image': 'url(/' +bItem.background_image + ')'};
+		return {};
+	};	
+
+	c.startCarousel = function () {
+		var $bannerCarousel = c.$banner.find('.carousel');
+		$bannerCarousel.carousel({
+			interval: 1000 * 10,
+			pause: "hover"
+		}).on('slide.bs.carousel', function (e) {
+			// pause the carousel when it cycles to the beginning
+			if (e.relatedTarget.getAttribute('data-idx') == 0)
+				// needs a timeout or pause will not be invoked
+				$scope.$applyAsync(function () {
+					$bannerCarousel.carousel('pause');
+				});
+		});
+	}
+
+	function trackImpression(bannerItem) {
+		var actionName = bannerItem.title + '-' + bannerItem.sys_id;
+
+		// Don't overdo it with logging banner views. Just do it once per page load
+		if (!(actionName in contentsViewed)) {	
+			cdAnalytics.trackEvent('Banner Impression', bannerItem);
+			contentsViewed[actionName] = true;
+		}
+	}
+
+	function displayItems() {
+		if($scope.data && $scope.data.items){
+			for (var i=0; i < $scope.data.items.length; i++){
+				$scope.data.items[i].html = $sce.trustAsHtml($scope.data.items[i].rich_text);
+
+				/* track the first piece of content as being viewed */
+				if (i == 0)
+					trackImpression($scope.data.items[i]);
+			}
+
+			// manually start carousel
+			if ($scope.data.items.length > 1)
+				$scope.$applyAsync(c.startCarousel);
+		}
+	}
+
+	if (c.data.async)
+		$scope.loadData(displayItems);
+	else
+		displayItems(); 
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.widget-banner {&#13;
+  margin: -10px -15px 30px -15px;&#13;
+  position: relative;&#13;
+  .carousel-inner .item {&#13;
+    height: 400px;&#13;
+    background-size: cover;&#13;
+    background-repeat: no-repeat;&#13;
+    background-position: center top;&#13;
+    .carousel-caption {&#13;
+      bottom: auto;&#13;
+      top: 0;&#13;
+      left: 0;&#13;
+      display: table;&#13;
+      width: 100%;&#13;
+      height: 100%;&#13;
+      padding: 0 7%;&#13;
+      text-shadow: 0 0 30px rgba(51, 51, 51, 0.5);&#13;
+      h1 {&#13;
+        font-size: 5.6rem;&#13;
+        margin-top: 0;&#13;
+      }&#13;
+      p {&#13;
+        font-size: 1.82rem;&#13;
+        margin-bottom:20px;&#13;
+      }&#13;
+    }&#13;
+    .carousel-caption &gt; div {&#13;
+      display: table-cell;&#13;
+      vertical-align: middle;&#13;
+    }&#13;
+  }&#13;
+  .carousel-control {&#13;
+    width: 5%;&#13;
+    z-index:10;&#13;
+    span {&#13;
+      position: absolute;&#13;
+      font-size: 2.8rem;&#13;
+      top: 50%;&#13;
+      left: 50%;&#13;
+      margin-left: -13px;&#13;
+      margin-top: -22px;&#13;
+    }&#13;
+  }&#13;
+  .carousel-indicators {&#13;
+    bottom: 0;&#13;
+    li {&#13;
+      margin:1px 2px;&#13;
+      &amp;.active{&#13;
+      	margin:0 2px;&#13;
+      }&#13;
+    }&#13;
+  }&#13;
+}&#13;
+@media (max-width: 425px) {&#13;
+  .widget-banner {&#13;
+    .carousel-inner .item {&#13;
+      height: 60vh;&#13;
+      .carousel-caption {&#13;
+        padding:0 15%;&#13;
+        h1 {&#13;
+          font-size: 3.5rem;&#13;
+        }&#13;
+        p {&#13;
+          font-size: 1.4rem;&#13;
+        }&#13;
+      }&#13;
+    }&#13;
+    .carousel-indicators li {&#13;
+      width: 8px;&#13;
+      height: 8px;&#13;
+      &amp;.active {&#13;
+        width: 10px;&#13;
+        height: 10px;&#13;
+      }&#13;
+    }&#13;
+    .carousel-control {&#13;
+      background: none;&#13;
+      span {&#13;
+        margin-left: -7px;&#13;
+      }&#13;
+    }&#13;
+  }&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>public_welcome_banner</id>
+        <internal>false</internal>
+        <link><![CDATA[function cdBannerLink($scope, $elem, $attr, c) {
+	c.$banner = jQuery($elem[0]);
+
+	c.$banner.bind('keyup', function(e) {
+		if (e.keyCode === 13) {
+			var $focusedIndicator = c.$banner.find('.carousel-indicator:focus');
+			var $targetedTabpanel = c.$banner.find("#" + $focusedIndicator.attr('aria-controls'));
+			var $currentTargedTabpanel = c.$banner.find('[tabindex="-1"]');
+
+			if ($currentTargedTabpanel)
+				$currentTargedTabpanel.attr('tabindex', 0);
+
+			$focusedIndicator.trigger('click');
+			$targetedTabpanel.attr('tabindex', -1);
+		}
+	});
+}]]></link>
+        <name>public welcome banner</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	data.async = true;
+	if (!input || input.action != "loadData")
+		return;
+
+	var grInstanceRecord = $sp.getInstanceRecord();
+	data.spInstanceId = grInstanceRecord.getUniqueValue();
+	data.items = cd_ContentDelivery.getContentForWidgetInstance(data.spInstanceId);
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-30 07:56:04</sys_created_on>
+        <sys_id>23927871dbf00010b6db8e47489619da</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>public welcome banner</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sp_widget_23927871dbf00010b6db8e47489619da</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-30 07:56:25</sys_updated_on>
+        <template><![CDATA[<section class="widget-banner">
+  <div ng-if="c.data.items.length > 0">
+    <div id="{{data.spInstanceId}}" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators" ng-if="c.data.items.length > 1" role="tablist">
+        <li class="carousel-indicator"
+            ng-repeat="item in c.data.items" 
+            ng-class="{'active': $first}"                   
+            data-target="#{{data.spInstanceId}}" 
+            data-slide-to="{{$index}}" 
+            role="tab" 
+            tabindex="0"
+            id="tab_{{data.spInstanceId}}_{{$index}}"
+            aria-selected="{{$first}}"
+            aria-controls="tabpanel_{{data.spInstanceId}}_{{$index}}">
+        </li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item"
+             id="tabpanel_{{data.spInstanceId}}_{{$index}}" 
+             ng-repeat="bannerItem in c.data.items" 
+             ng-class="{'active': $first}" 
+             ng-style= "getStyle(bannerItem)" 
+             ng-swipe-right="c.swipeRight()" 
+             ng-swipe-left="c.swipeLeft()" 
+             data-idx="{{$index}}"
+             aria-labelledby="tab_{{data.spInstanceId}}_{{$index}}"
+             role="tabpanel">
+          <div ng-if="bannerItem.use_custom_html=='false'" class="carousel-caption text-center c-content" data-idx="{{$index}}">
+            <div>
+              <h1>{{::bannerItem.heading_text}}</h1>
+              <p>{{::bannerItem.body_text}}</p>
+              <a ng-if="bannerItem.show_button=='true'" any-click="onButtonClick(bannerItem)" target="_blank" ng-href="{{bannerItem.url}}" class="widget-button btn btn-primary btn-lg">{{::bannerItem.button_text}}</a>              
+            </div>
+          </div>
+          <div ng-if="bannerItem.use_custom_html=='true'" class="c-content" data-idx="{{$index}}">
+            <p cd-html html="{{::bannerItem.html}}" item="bannerItem" action="clickAction"></p>
+          </div>
+        </div>
+      </div>
+      <a ng-if="c.data.items.length > 1" class="left carousel-control" href="#{{data.spInstanceId}}" role="button" data-slide="prev" ng-click="preventDefault($event)">
+        <span class="fa fa-angle-left" aria-hidden="true"></span>
+        <span class="sr-only">${Previous}</span>
+      </a>
+      <a ng-if="c.data.items.length > 1" class="right carousel-control"  href="#{{data.spInstanceId}}" role="button" data-slide="next" ng-click="preventDefault($event)">
+        <span class="fa fa-angle-right" aria-hidden="true"></span>
+        <span class="sr-only">${Next}</span>
+      </a>        
+    </div>
+  </div> 
+</section>]]></template>
+    </sp_widget>
+</record_update>

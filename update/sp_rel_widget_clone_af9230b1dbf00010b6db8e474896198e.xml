@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="INSERT_OR_UPDATE">
+        <child display_value="public welcome banner">23927871dbf00010b6db8e47489619da</child>
+        <cloned>2019-10-30 07:56:04</cloned>
+        <last_validated>2019-10-30 07:56:04</last_validated>
+        <parent display_value="Welcome Banner (CD)">e53596c3dbcb430085ea54c0cf9619b2</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function cdBannerController($scope, $sce, $timeout, $window, cdAnalytics) { 
+
+	var c = this;
+	var contentsViewed = {};
+
+	$scope.clickAction = 'Banner Clickthrough';
+
+	$scope.loadData = function(callback) {		
+		$scope.data.action = "loadData";
+		$scope.server.update().then(callback);
+	};
+
+	$scope.preventDefault = function($event){
+		$event.preventDefault();
+	};
+
+	$scope.swipeRight = function(){
+		angular.element("#"+$scope.data.spInstanceId).carousel('prev');
+	};
+
+	$scope.swipeLeft = function(){
+		angular.element("#"+$scope.data.spInstanceId).carousel('next');
+	};
+
+	$scope.onButtonClick = function(bItem) {
+		cdAnalytics.trackEvent('Banner Clickthrough', bItem, bItem.button_text);
+	};
+
+	$scope.$watch('data.spInstanceId', function(newValue) {
+		if (!newValue)
+			return;
+
+		$timeout(function() {
+			$('#' + newValue).on('slid.bs.carousel', function(e){
+				$(e.relatedTarget).find('.c-content').each(function(i, el) {
+					var idx = parseInt($(el).attr('data-idx'));
+					var bItem = $scope.data.items[idx];
+
+					trackImpression(bItem);
+				});
+			});
+		});
+	});
+
+	$scope.getStyle = function(bItem) {
+		if (bItem.use_custom_html !== 'true')
+			return {'background-image': 'url(/' +bItem.background_image + ')'};
+		return {};
+	};	
+
+	c.startCarousel = function () {
+		var $bannerCarousel = c.$banner.find('.carousel');
+		$bannerCarousel.carousel({
+			interval: 1000 * 10,
+			pause: "hover"
+		}).on('slide.bs.carousel', function (e) {
+			// pause the carousel when it cycles to the beginning
+			if (e.relatedTarget.getAttribute('data-idx') == 0)
+				// needs a timeout or pause will not be invoked
+				$scope.$applyAsync(function () {
+					$bannerCarousel.carousel('pause');
+				});
+		});
+	}
+
+	function trackImpression(bannerItem) {
+		var actionName = bannerItem.title + '-' + bannerItem.sys_id;
+
+		// Don't overdo it with logging banner views. Just do it once per page load
+		if (!(actionName in contentsViewed)) {	
+			cdAnalytics.trackEvent('Banner Impression', bannerItem);
+			contentsViewed[actionName] = true;
+		}
+	}
+
+	function displayItems() {
+		if($scope.data &amp;&amp; $scope.data.items){
+			for (var i=0; i &lt; $scope.data.items.length; i++){
+				$scope.data.items[i].html = $sce.trustAsHtml($scope.data.items[i].rich_text);
+
+				/* track the first piece of content as being viewed */
+				if (i == 0)
+					trackImpression($scope.data.items[i]);
+			}
+
+			// manually start carousel
+			if ($scope.data.items.length &gt; 1)
+				$scope.$applyAsync(c.startCarousel);
+		}
+	}
+
+	if (c.data.async)
+		$scope.loadData(displayItems);
+	else
+		displayItems(); 
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.widget-banner {&amp;#13;
+  margin: -10px -15px 30px -15px;&amp;#13;
+  position: relative;&amp;#13;
+  .carousel-inner .item {&amp;#13;
+    height: 400px;&amp;#13;
+    background-size: cover;&amp;#13;
+    background-repeat: no-repeat;&amp;#13;
+    background-position: center top;&amp;#13;
+    .carousel-caption {&amp;#13;
+      bottom: auto;&amp;#13;
+      top: 0;&amp;#13;
+      left: 0;&amp;#13;
+      display: table;&amp;#13;
+      width: 100%;&amp;#13;
+      height: 100%;&amp;#13;
+      padding: 0 7%;&amp;#13;
+      text-shadow: 0 0 30px rgba(51, 51, 51, 0.5);&amp;#13;
+      h1 {&amp;#13;
+        font-size: 5.6rem;&amp;#13;
+        margin-top: 0;&amp;#13;
+      }&amp;#13;
+      p {&amp;#13;
+        font-size: 1.82rem;&amp;#13;
+        margin-bottom:20px;&amp;#13;
+      }&amp;#13;
+    }&amp;#13;
+    .carousel-caption &amp;gt; div {&amp;#13;
+      display: table-cell;&amp;#13;
+      vertical-align: middle;&amp;#13;
+    }&amp;#13;
+  }&amp;#13;
+  .carousel-control {&amp;#13;
+    width: 5%;&amp;#13;
+    z-index:10;&amp;#13;
+    span {&amp;#13;
+      position: absolute;&amp;#13;
+      font-size: 2.8rem;&amp;#13;
+      top: 50%;&amp;#13;
+      left: 50%;&amp;#13;
+      margin-left: -13px;&amp;#13;
+      margin-top: -22px;&amp;#13;
+    }&amp;#13;
+  }&amp;#13;
+  .carousel-indicators {&amp;#13;
+    bottom: 0;&amp;#13;
+    li {&amp;#13;
+      margin:1px 2px;&amp;#13;
+      &amp;amp;.active{&amp;#13;
+      	margin:0 2px;&amp;#13;
+      }&amp;#13;
+    }&amp;#13;
+  }&amp;#13;
+}&amp;#13;
+@media (max-width: 425px) {&amp;#13;
+  .widget-banner {&amp;#13;
+    .carousel-inner .item {&amp;#13;
+      height: 60vh;&amp;#13;
+      .carousel-caption {&amp;#13;
+        padding:0 15%;&amp;#13;
+        h1 {&amp;#13;
+          font-size: 3.5rem;&amp;#13;
+        }&amp;#13;
+        p {&amp;#13;
+          font-size: 1.4rem;&amp;#13;
+        }&amp;#13;
+      }&amp;#13;
+    }&amp;#13;
+    .carousel-indicators li {&amp;#13;
+      width: 8px;&amp;#13;
+      height: 8px;&amp;#13;
+      &amp;amp;.active {&amp;#13;
+        width: 10px;&amp;#13;
+        height: 10px;&amp;#13;
+      }&amp;#13;
+    }&amp;#13;
+    .carousel-control {&amp;#13;
+      background: none;&amp;#13;
+      span {&amp;#13;
+        margin-left: -7px;&amp;#13;
+      }&amp;#13;
+    }&amp;#13;
+  }&amp;#13;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description&gt;Displays portal content with Content type of Banner. Generally used to display informative banners/text. If multiple items, they will be displayed in a carousel.&lt;/description&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;true&lt;/has_preview&gt;&lt;id&gt;cd-banner&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function cdBannerLink($scope, $elem, $attr, c) {
+	c.$banner = jQuery($elem[0]);
+
+	c.$banner.bind('keyup', function(e) {
+		if (e.keyCode === 13) {
+			var $focusedIndicator = c.$banner.find('.carousel-indicator:focus');
+			var $targetedTabpanel = c.$banner.find("#" + $focusedIndicator.attr('aria-controls'));
+			var $currentTargedTabpanel = c.$banner.find('[tabindex="-1"]');
+
+			if ($currentTargedTabpanel)
+				$currentTargedTabpanel.attr('tabindex', 0);
+
+			$focusedIndicator.trigger('click');
+			$targetedTabpanel.attr('tabindex', -1);
+		}
+	});
+}]]&gt;&lt;/link&gt;&lt;name&gt;Welcome Banner (CD)&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+	data.async = true;
+	if (!input || input.action != "loadData")
+		return;
+
+	var grInstanceRecord = $sp.getInstanceRecord();
+	data.spInstanceId = grInstanceRecord.getUniqueValue();
+	data.items = cd_ContentDelivery.getContentForWidgetInstance(data.spInstanceId);
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2017-12-19 23:55:53&lt;/sys_created_on&gt;&lt;sys_id&gt;e53596c3dbcb430085ea54c0cf9619b2&lt;/sys_id&gt;&lt;sys_mod_count&gt;282&lt;/sys_mod_count&gt;&lt;sys_name&gt;Welcome Banner (CD)&lt;/sys_name&gt;&lt;sys_package display_value="Content Delivery" source="sn_cd"&gt;b26210490b7203008cd6e7ae37673a6a&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Content Delivery"&gt;b26210490b7203008cd6e7ae37673a6a&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_e53596c3dbcb430085ea54c0cf9619b2&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2019-04-30 17:15:44&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;section class="widget-banner"&gt;
+  &lt;div ng-if="c.data.items.length &gt; 0"&gt;
+    &lt;div id="{{data.spInstanceId}}" class="carousel slide" data-ride="carousel"&gt;
+      &lt;ol class="carousel-indicators" ng-if="c.data.items.length &gt; 1" role="tablist"&gt;
+        &lt;li class="carousel-indicator"
+            ng-repeat="item in c.data.items" 
+            ng-class="{'active': $first}"                   
+            data-target="#{{data.spInstanceId}}" 
+            data-slide-to="{{$index}}" 
+            role="tab" 
+            tabindex="0"
+            id="tab_{{data.spInstanceId}}_{{$index}}"
+            aria-selected="{{$first}}"
+            aria-controls="tabpanel_{{data.spInstanceId}}_{{$index}}"&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;div class="carousel-inner"&gt;
+        &lt;div class="item"
+             id="tabpanel_{{data.spInstanceId}}_{{$index}}" 
+             ng-repeat="bannerItem in c.data.items" 
+             ng-class="{'active': $first}" 
+             ng-style= "getStyle(bannerItem)" 
+             ng-swipe-right="c.swipeRight()" 
+             ng-swipe-left="c.swipeLeft()" 
+             data-idx="{{$index}}"
+             aria-labelledby="tab_{{data.spInstanceId}}_{{$index}}"
+             role="tabpanel"&gt;
+          &lt;div ng-if="bannerItem.use_custom_html=='false'" class="carousel-caption text-center c-content" data-idx="{{$index}}"&gt;
+            &lt;div&gt;
+              &lt;h1&gt;{{::bannerItem.heading_text}}&lt;/h1&gt;
+              &lt;p&gt;{{::bannerItem.body_text}}&lt;/p&gt;
+              &lt;a ng-if="bannerItem.show_button=='true'" any-click="onButtonClick(bannerItem)" target="_blank" ng-href="{{bannerItem.url}}" class="widget-button btn btn-primary btn-lg"&gt;{{::bannerItem.button_text}}&lt;/a&gt;              
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div ng-if="bannerItem.use_custom_html=='true'" class="c-content" data-idx="{{$index}}"&gt;
+            &lt;p cd-html html="{{::bannerItem.html}}" item="bannerItem" action="clickAction"&gt;&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;a ng-if="c.data.items.length &gt; 1" class="left carousel-control" href="#{{data.spInstanceId}}" role="button" data-slide="prev" ng-click="preventDefault($event)"&gt;
+        &lt;span class="fa fa-angle-left" aria-hidden="true"&gt;&lt;/span&gt;
+        &lt;span class="sr-only"&gt;${Previous}&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a ng-if="c.data.items.length &gt; 1" class="right carousel-control"  href="#{{data.spInstanceId}}" role="button" data-slide="next" ng-click="preventDefault($event)"&gt;
+        &lt;span class="fa fa-angle-right" aria-hidden="true"&gt;&lt;/span&gt;
+        &lt;span class="sr-only"&gt;${Next}&lt;/span&gt;
+      &lt;/a&gt;        
+    &lt;/div&gt;
+  &lt;/div&gt; 
+&lt;/section&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-30 07:56:04</sys_created_on>
+        <sys_id>af9230b1dbf00010b6db8e474896198e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>23927871dbf00010b6db8e47489619da</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_af9230b1dbf00010b6db8e474896198e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-30 07:56:04</sys_updated_on>
+    </sp_rel_widget_clone>
+</record_update>

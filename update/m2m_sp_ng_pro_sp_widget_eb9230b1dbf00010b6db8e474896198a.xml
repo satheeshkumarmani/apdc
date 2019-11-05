@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_ng_pro_sp_widget">
+    <m2m_sp_ng_pro_sp_widget action="INSERT_OR_UPDATE">
+        <sp_angular_provider display_value="cdAnalytics">3b621f20e70423008901268b03f6a9ec</sp_angular_provider>
+        <sp_widget display_value="public welcome banner">23927871dbf00010b6db8e47489619da</sp_widget>
+        <sys_class_name>m2m_sp_ng_pro_sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-10-30 07:56:04</sys_created_on>
+        <sys_id>eb9230b1dbf00010b6db8e474896198a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>cdAnalytics.public welcome banner</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>m2m_sp_ng_pro_sp_widget_eb9230b1dbf00010b6db8e474896198a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-10-30 07:56:04</sys_updated_on>
+    </m2m_sp_ng_pro_sp_widget>
+</record_update>

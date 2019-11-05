@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="test" max_length="40" name="x_93700_apdc_test" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=description" label="description" max_length="180" name="u_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=item" label="item" max_length="64000" name="u_item" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=link" label="link" max_length="40" name="u_link" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=title" label="title" max_length="40" name="u_title" type="string"/>
+    </element>
+</database>

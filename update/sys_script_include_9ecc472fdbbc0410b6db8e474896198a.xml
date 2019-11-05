@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_93700_apdc.ReportUtil</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>ReportUtil</name>
+        <script><![CDATA[var ReportUtil = Class.create();
+
+
+ReportUtil.prototype = {
+
+
+
+
+
+   getUsers: function() {
+
+
+         var userArray = [];
+
+
+         var querystring = 'active=true^sys_created_onONThis month@javascript:gs.beginningOfThisMonth()@javascript:gs.endOfThisMonth()';
+
+
+
+         var ritmGR = new GlideRecord('sc_req_item');
+
+
+         ritmGR.addEncodedQuery(querystring);
+
+
+         ritmGR.query();
+
+
+         while (ritmGR.next()) {
+
+
+               ritmArray.push(ritmGR.getValue('sys_id'));
+
+
+         }
+
+
+
+         return userArray;
+
+
+   },
+
+
+
+   type: 'ReportUtil'
+
+
+};
+
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-11-05 05:42:06</sys_created_on>
+        <sys_id>9ecc472fdbbc0410b6db8e474896198a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ReportUtil</sys_name>
+        <sys_package display_value="app" source="x_93700_apdc">8472deb0db01230055552bfa4b961970</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="app">8472deb0db01230055552bfa4b961970</sys_scope>
+        <sys_update_name>sys_script_include_9ecc472fdbbc0410b6db8e474896198a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-11-05 05:42:06</sys_updated_on>
+    </sys_script_include>
+</record_update>
